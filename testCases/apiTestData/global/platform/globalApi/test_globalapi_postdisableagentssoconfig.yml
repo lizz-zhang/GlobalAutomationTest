@@ -1,0 +1,15 @@
+---
+alltest:
+- businessTests:
+  - case: Disable the agentSsoConfig successfully
+    http:
+      method: POST
+      path: /api/global/agentSsoConfig:disable?siteId=$siteId$
+      body:
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+         "isEnabled": 'False',
+      }
+      customcheck: {}

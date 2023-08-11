@@ -1,0 +1,13 @@
+---
+alltest:
+- businessTests:
+  - case: check email existed
+    http:
+      method: GET
+      path: /platformapi/api/v1/agents/CheckHashEmailIsExisted?hashedEmail=$email$&partnerId=10000
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}

@@ -1,0 +1,25 @@
+---
+alltest:
+  - businessTests:
+      - case: Delete Public Canned Message Category Successfully
+        http:
+          method: DELETE
+          path: /api/global/publicCannedMessageCategories/$id$
+          body: {}
+        expect:
+          responsestate: 204
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}
+      - case: Delete Public Canned Message Category Failed. Because the id is not exist
+        http:
+          method: DELETE
+          path: /api/global/publicCannedMessageCategories/6c8dcf4e-5144-4197-a2ec-8ab2f26a3f76
+          body: {}
+        expect:
+          responsestate: 404
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}

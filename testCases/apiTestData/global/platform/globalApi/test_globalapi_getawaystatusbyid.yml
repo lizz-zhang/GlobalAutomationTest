@@ -1,0 +1,27 @@
+---
+alltest:
+- businessTests:
+  - case: get agent away status by id
+    http:
+      method: GET
+      path: /api/global/agentawaystatuses/$id$?siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+        "name":"test_status"
+      }
+      customcheck: {}
+
+  - case: get agent away status by no exist id
+    http:
+      method: GET
+      path: /api/global/agentawaystatuses/00000000-1111-2222-3333-000011112222?siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}

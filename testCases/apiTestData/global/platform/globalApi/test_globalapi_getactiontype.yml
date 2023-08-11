@@ -1,0 +1,20 @@
+---
+alltest:
+- businessTests:
+  - case: Get the list of Action Types successfully
+    http:
+      method: GET
+      path: /api/global/ActionTypes?siteid=$siteId$
+      head: {
+              "Content-Type":'application/json',
+              "User-Agent":'Apache-HttpClient/4.5.12 (Java/1.8.0_40)',
+              "content-encoding":'gzip'
+      }
+      body:
+      expect:
+        responsestate: 200
+        responsejsonschemal:
+        responseitemcheck: {
+          "errorCode":0,
+        }
+      customcheck: {}

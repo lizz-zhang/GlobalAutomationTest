@@ -1,0 +1,14 @@
+---
+alltest:
+  - businessTests:
+      - case: Get the Login IP Allowlist Config Successfully
+        http:
+          method: GET
+          path: /api/global/loginIpAllowlistConfig
+          body: {}
+        expect:
+          responsestate: 200
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}

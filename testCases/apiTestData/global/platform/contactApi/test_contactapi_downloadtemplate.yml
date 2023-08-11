@@ -1,0 +1,13 @@
+---
+alltest:
+- businessTests:
+  - case: download template
+    http:
+      method: GET
+      path: /api/contact/contacts/importTemplate?siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck:
+      customcheck: {}

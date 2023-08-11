@@ -1,0 +1,89 @@
+---
+alltest:
+- businessTests:
+  - case: put a contact field by id
+    http:
+      method: PUT
+      path: /api/contact/fields/$id$?siteid=$siteId$
+      body: {
+        "siteId":$siteId$,
+        "isSystem":false,
+        "type":"text",
+        "name":"test text",
+        "isRequired":true,
+        "isIdentity":false,
+        "identityType":"",
+        "isVisible":true,
+        "isReadOnly":false,
+        "length":256,
+        "helpText":"help text 111",
+        "defaultValue":"111",
+        "order":73,
+        "fieldOptions":[
+       ]
+    }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+        "isRequired":true,
+        "helpText":"help text 111",
+        "defaultValue":"111",
+      }
+      customcheck: {}
+
+  - case: put a contact fieldby no exist id
+    http:
+      method: PUT
+      path: /api/contact/fields/00000000-1111-2222-3333-000011112222?siteid=$siteId$
+      body: {
+        "siteId":$siteId$,
+        "isSystem":false,
+        "type":"text",
+        "name":"test text",
+        "isRequired":true,
+        "isIdentity":false,
+        "identityType":"",
+        "isVisible":true,
+        "isReadOnly":false,
+        "length":256,
+        "helpText":"000",
+        "defaultValue":"111",
+        "order":73,
+        "fieldOptions":[
+       ]
+    }
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}
+
+  - case: put a contact, name can't be changed
+    http:
+      method: PUT
+      path: /api/contact/fields/$id$?siteid=$siteId$
+      body: {
+        "siteId":$siteId$,
+        "isSystem":false,
+        "type":"text",
+        "name":"change name ",
+        "isRequired":true,
+        "isIdentity":false,
+        "identityType":"",
+        "isVisible":true,
+        "isReadOnly":false,
+        "length":256,
+        "helpText":"help text 111",
+        "defaultValue":"111",
+        "order":73,
+        "fieldOptions":[
+       ]
+    }
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}

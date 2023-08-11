@@ -1,0 +1,60 @@
+---
+alltest:
+- businessTests:
+  - case: post text type contact field
+    http:
+      method: POST
+      path: /api/contact/fields?siteid=$siteId$
+      body: {
+        "name":"new text field",
+        "isSystem":false,
+        "isIdentity":false,
+        "isVisible":true,
+        "isRequired":false,
+        "isReadOnly":false,
+        "type":"text",
+        "length":256,
+        "helpText":"",
+        "defaultValue":"this is default value",
+        "fieldOptions":[
+        ],
+        "linkUrl":""
+}
+    expect:
+      responsestate: 201
+      responsejsonschemal:
+      responseitemcheck: {
+        "name":"new text field",
+        "defaultValue":"this is default value"
+      }
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/fields/$id$
+
+  - case: create field when name exists
+    http:
+      method: POST
+      path: /api/contact/fields?siteid=$siteId$
+      body: {
+        "name":"test text",
+        "isSystem":false,
+        "isIdentity":false,
+        "isVisible":true,
+        "isRequired":false,
+        "isReadOnly":false,
+        "type":"text",
+        "length":256,
+        "helpText":"",
+        "defaultValue":"this is default value",
+        "fieldOptions":[
+        ],
+        "linkUrl":""
+}
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/fields/$id$

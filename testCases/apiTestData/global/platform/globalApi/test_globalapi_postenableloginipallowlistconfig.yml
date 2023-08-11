@@ -1,0 +1,19 @@
+---
+alltest:
+  - businessTests:
+      - case: Post Enable the Login IP Allowlist Config Successfully
+        http:
+          method: POST
+          path: /api/global/loginIpAllowlistConfig:enable
+          body: {}
+        expect:
+          responsestate: 200
+          responsejsonschemal:
+          responseitemcheck: {
+              "isEnabled": true
+          }
+          dbcheck: None
+          customcheck: {}
+          aftercaseaction: POST
+          aftercasepath: /api/global/loginIpAllowlistConfig:disable
+          aftercasebody: {}

@@ -1,0 +1,30 @@
+---
+alltest:
+- businessTests:
+  - case: post partner user
+    http:
+      method: POST
+      path: /api/Global/partnerUsers
+      body: {
+        "email":"$random$@$random2$.com",
+        "name":"test create",
+        "partnerRoleIds":[
+            "$role_id$"
+        ],
+        "status":"active",
+        "phone":"",
+        "title":"",
+        "description":"",
+        "password":"111111",
+        "confirmEmail":"1@1.co",
+        "confirmPassword":"111111"
+    }
+    expect:
+      responsestate: 201
+      responsejsonschemal:
+      responseitemcheck: {
+         "name":'test create',
+      }
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/Global/partnerUsers/$id$

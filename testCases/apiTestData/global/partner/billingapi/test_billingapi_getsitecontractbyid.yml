@@ -1,0 +1,27 @@
+---
+alltest:
+  - businessTests:
+      - case: Get Site Contract by id Success
+        http:
+          method: GET
+          path: /api/billing/sitecontracts/$id$
+          body: {}
+        expect:
+          responsestate: 200
+          responsejsonschemal:
+          responseitemcheck: {
+            "id":$id$
+          }
+          dbcheck: None
+          customcheck: {}
+      - case: Get Site Contract by id Failed. Because id is not Exist
+        http:
+          method: GET
+          path: /api/billing/sitecontracts/11111111-1111-1111-1111-111111111111
+          body: {}
+        expect:
+          responsestate: 404
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}

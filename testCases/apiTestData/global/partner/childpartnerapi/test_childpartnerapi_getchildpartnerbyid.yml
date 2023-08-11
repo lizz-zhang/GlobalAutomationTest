@@ -1,0 +1,26 @@
+---
+alltest:
+- businessTests:
+  - case: get child partner by id
+    http:
+      method: GET
+      path: /api/Global/childPartners?id=$id$
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}
+
+  - case: get child partner by no exist id
+    http:
+      method: GET
+      path: /api/Global/childPartners?id=9999
+      body:
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}

@@ -1,0 +1,26 @@
+---
+alltest:
+- businessTests:
+  - case: get a role by id
+    http:
+      method: GET
+      path: /api/global/roles/$id$?siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}
+
+  - case: get a role by no exist id
+    http:
+      method: GET
+      path: /api/global/roles/00000000-1111-2222-3333-000011112222?siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}

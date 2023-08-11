@@ -1,0 +1,40 @@
+---
+alltest:
+  - businessTests:
+      - case: Put Login IP Allowlist Successfully
+        http:
+          method: PUT
+          path: /api/global/loginIpAllowlists/$id$
+          body: {
+            "ipRangeFrom": "2.1.1.1",
+            "ipRangeTo": "2.1.1.10"
+          }
+        expect:
+          responsestate: 200
+          responsejsonschemal:
+          responseitemcheck: {
+            "ipRangeFrom": "2.1.1.1",
+            "ipRangeTo": "2.1.1.10"
+          }
+          dbcheck: None
+          customcheck: {}
+          aftercaseaction: PUT
+          aftercasepath: /api/global/loginIpAllowlists/$id$
+          aftercasebody: {
+            "ipRangeFrom": "1.1.1.1",
+            "ipRangeTo": "1.1.1.10"
+          }
+      - case: Put Login IP Allowlist Failed. Because id is not Exist
+        http:
+          method: PUT
+          path: /api/global/loginIpAllowlists/41a97d95-f2b1-4971-9303-14dd9e079f42
+          body: {
+            "ipRangeFrom": "2.1.1.1",
+            "ipRangeTo": "2.1.1.10"
+          }
+        expect:
+          responsestate: 404
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}

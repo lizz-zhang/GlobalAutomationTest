@@ -1,0 +1,76 @@
+---
+alltest:
+- businessTests:
+  - case: put a partner user by id
+    http:
+      method: PUT
+      path: /api/Global/partnerUsers/$id$
+      body: {
+        "email":"$random$@$random2$.com",
+        "name":"update user name",
+        "partnerRoleIds":[
+            "$role_id$"
+        ],
+        "status":"inactive",
+        "phone":"111",
+        "title":"222",
+        "description":"333"
+    }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+        "email":"$email$",
+        "name":"update user name",
+        "phone":"111",
+        "title":"222",
+        "description":"333",
+        "status":"inactive"
+      }
+      customcheck: {}
+
+  - case: put a partner user by no exist id
+    http:
+      method: PUT
+      path: /api/Global/partnerUsers/11111111-2222-3333-4444-123412341234
+      body: {
+        "email":"$random$@$random2$.com",
+        "name":"update user name",
+        "partnerRoleIds":[
+            "$role_id$"
+        ],
+        "status":"inactive",
+        "phone":"111",
+        "title":"222",
+        "description":"333"
+    }
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}
+
+- illegalInputTest:
+  - case: update partner user no required field
+    http:
+      method: PUT
+      path: /api/Global/partnerUsers/$id$
+      body: {
+        "email":"$random$@$random2$.com",
+        "name":"update user name",
+        "partnerRoleIds":[
+            "$role_id$"
+        ],
+        "status":"inactive",
+        "phone":"111",
+        "title":"222",
+        "description":"333"
+    }
+    expect:
+          responsestate: 400
+          requirefield: ['email','name']
+          error:
+          errormessage:
+          customcheck:
+          responseitemcheck:

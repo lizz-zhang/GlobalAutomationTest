@@ -1,0 +1,331 @@
+---
+alltest:
+- businessTests:
+  - case: Success Create contact identity with all parameter
+    http:
+      method: POST
+      path: /api/contact/ContactIdentities?siteid=$siteId$
+      body: {
+        "contactId": "$contactId$",
+        "ContactIdentityType": "Visitor",
+        "value": "$random$a-1eef-4b8d-a9bc-ce2931657a7d",
+        "avatarUrl": "avatarUrl initial",
+        "originalContactPageUrl": "https://originalContactPageUrl.originalContactPageUrl",
+        "displayName": "displayName initial",
+        "infoUrl": "InfoUrl initial"
+    }
+    expect:
+      responsestate: 201
+      responsejsonschemal:
+      responseitemcheck: {
+         "infoUrl": "InfoUrl initial"
+      }
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/ContactIdentities/$id$
+
+  - case: Failed create identity with invalid contactId
+    http:
+      method: POST
+      path: /api/contact/ContactIdentities?siteid=$siteId$
+      body: {
+        "contactId": "invalidContactId",
+        "ContactIdentityType": "SecureMessaging",
+        "value": "value initial",
+      }
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/ContactIdentities/$id$
+
+  - case: Failed create identity with contactId not existed
+    http:
+      method: POST
+      path: /api/contact/ContactIdentities?siteid=$siteId$
+      body: {
+        "contactId": "00000000-3333-2222-1111-000000000000",
+        "ContactIdentityType": "SecureMessaging",
+        "value": "value initial",
+      }
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/ContactIdentities/$id$
+
+  - case: Failed create identity with invalid ContactIdentityType
+    http:
+      method: POST
+      path: /api/contact/ContactIdentities?siteid=$siteId$
+      body: {
+        "contactId": "$contactId$",
+        "ContactIdentityType": "invalidContactIdentityType",
+        "value": "value initial",
+      }
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/ContactIdentities/$id$
+
+  - case: Failed create identity with email dumplicate
+    http:
+      method: POST
+      path: /api/contact/ContactIdentities?siteid=$siteId$
+      body: {
+        "contactId": "$contactId$",
+        "ContactIdentityType": "Email",
+        "value": "1@1.q",
+      }
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/ContactIdentities/$id$
+
+  - case: Failed create identity with SMS dumplicate
+    http:
+      method: POST
+      path: /api/contact/ContactIdentities?siteid=$siteId$
+      body: {
+        "contactId": "$contactId$",
+        "ContactIdentityType": "SMS",
+        "value": "111111",
+      }
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/ContactIdentities/$id$
+
+  - case: Failed create identity with Facebook dumplicate
+    http:
+      method: POST
+      path: /api/contact/ContactIdentities?siteid=$siteId$
+      body: {
+        "contactId": "$contactId$",
+        "ContactIdentityType": "Facebook",
+        "value": "aaaaaa",
+      }
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/ContactIdentities/$id$
+
+  - case: Failed create identity with Twitter dumplicate
+    http:
+      method: POST
+      path: /api/contact/ContactIdentities?siteid=$siteId$
+      body: {
+        "contactId": "$contactId$",
+        "ContactIdentityType": "Twitter",
+        "value": "aaaaaa",
+      }
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/ContactIdentities/$id$
+
+  - case: Failed create identity with WhatsApp dumplicate
+    http:
+      method: POST
+      path: /api/contact/ContactIdentities?siteid=$siteId$
+      body: {
+        "contactId": "$contactId$",
+        "ContactIdentityType": "WhatsApp",
+        "value": "aaaaaa",
+      }
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/ContactIdentities/$id$
+
+  - case: Failed create identity with Instagram dumplicate
+    http:
+      method: POST
+      path: /api/contact/ContactIdentities?siteid=$siteId$
+      body: {
+        "contactId": "$contactId$",
+        "ContactIdentityType": "Instagram",
+        "value": "aaaaaa",
+      }
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/ContactIdentities/$id$
+
+  - case: Failed create identity with Telegram dumplicate
+    http:
+      method: POST
+      path: /api/contact/ContactIdentities?siteid=$siteId$
+      body: {
+        "contactId": "$contactId$",
+        "ContactIdentityType": "Telegram",
+        "value": "aaaaaa",
+      }
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/ContactIdentities/$id$
+
+  - case: Failed create identity with Wechat dumplicate
+    http:
+      method: POST
+      path: /api/contact/ContactIdentities?siteid=$siteId$
+      body: {
+        "contactId": "$contactId$",
+        "ContactIdentityType": "Wechat",
+        "value": "aaaaaa",
+      }
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/ContactIdentities/$id$
+
+  - case: Failed create identity with Line dumplicate
+    http:
+      method: POST
+      path: /api/contact/ContactIdentities?siteid=$siteId$
+      body: {
+        "contactId": "$contactId$",
+        "ContactIdentityType": "Line",
+        "value": "aaaaaa",
+      }
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/ContactIdentities/$id$
+
+  - case: Failed create identity with SSOID dumplicate
+    http:
+      method: POST
+      path: /api/contact/ContactIdentities?siteid=$siteId$
+      body: {
+        "contactId": "$contactId$",
+        "ContactIdentityType": "SSOID",
+        "value": "aaaaaa",
+      }
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/ContactIdentities/$id$
+
+  - case: Failed create identity with ExternalID dumplicate
+    http:
+      method: POST
+      path: /api/contact/ContactIdentities?siteid=$siteId$
+      body: {
+        "contactId": "$contactId$",
+        "ContactIdentityType": "ExternalID",
+        "value": "aaaaaa",
+      }
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/ContactIdentities/$id$
+
+  - case: Failed create identity with SecureMessaging dumplicate
+    http:
+      method: POST
+      path: /api/contact/ContactIdentities?siteid=$siteId$
+      body: {
+        "contactId": "$contactId$",
+        "ContactIdentityType": "SecureMessaging",
+        "value": "aaaaaa",
+      }
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/ContactIdentities/$id$
+
+  - case: Failed create identity with Visitor dumplicate
+    http:
+      method: POST
+      path: /api/contact/ContactIdentities?siteid=$siteId$
+      body: {
+        "contactId": "$contactId$",
+        "ContactIdentityType": "Visitor",
+        "value": "asdfasda-1eef-4b8d-a9bc-ce2931657a7d",
+      }
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/ContactIdentities/$id$
+
+  - case: Failed create identity with Visitor invalid
+    http:
+      method: POST
+      path: /api/contact/ContactIdentities?siteid=$siteId$
+      body: {
+        "contactId": "$contactId$",
+        "ContactIdentityType": "Visitor",
+        "value": "bbbbbb",
+      }
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/ContactIdentities/$id$
+
+- illegalInputTest:
+  - case: Failed Create contact identity without required parameters
+    http:
+      method: POST
+      path: /api/contact/contacts?siteid=$siteId$
+      body: {
+        "contactId": "$contactId$",
+        "ContactIdentityType": "Visitor",
+        "value": "$random$a-1eef-4b8d-a9bc-ce2931657a7d",
+    }
+    expect:
+      responsestate: 400
+      requirefield: ['contactId','ContactIdentityType','value']
+      error:
+      errormessage: the parameter "%s" is required.
+      customcheck: {}

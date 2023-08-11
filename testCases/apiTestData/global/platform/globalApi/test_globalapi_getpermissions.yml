@@ -1,0 +1,14 @@
+---
+alltest:
+  - businessTests:
+      - case: Get the list of Permissions Successfully
+        http:
+          method: GET
+          path: /api/global/permissions
+          body: {}
+        expect:
+          responsestate: 200
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}

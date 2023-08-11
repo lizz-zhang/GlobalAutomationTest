@@ -1,0 +1,27 @@
+---
+alltest:
+- businessTests:
+  - case: get a agent by id
+    http:
+      method: GET
+      path: /api/global/agents/$id$?siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+         "displayName":'initial 1',
+      }
+      customcheck: {}
+
+  - case: get a agent by no exist id
+    http:
+      method: GET
+      path: /api/global/agents/00000000-1111-2222-3333-000011112222?siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}

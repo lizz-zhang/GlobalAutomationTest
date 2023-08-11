@@ -1,0 +1,25 @@
+---
+alltest:
+  - businessTests:
+      - case: Get a single Login IP Allowlist Successfully
+        http:
+          method: GET
+          path: /api/global/loginIpAllowlists/$id$
+          body: {}
+        expect:
+          responsestate: 200
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}
+      - case: Get a single Login IP Allowlist Failed. Because the id is not exist
+        http:
+          method: GET
+          path: /api/global/loginIpAllowlists/6c8dcf4e-5144-4197-a2ec-8ab2f26a3f76
+          body: {}
+        expect:
+          responsestate: 404
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}

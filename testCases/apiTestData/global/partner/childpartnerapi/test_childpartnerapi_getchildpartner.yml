@@ -1,0 +1,15 @@
+---
+alltest:
+- businessTests:
+  - case: get child partner
+    http:
+      method: GET
+      path: /api/Global/childPartners
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}
+

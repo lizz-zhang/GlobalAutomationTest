@@ -1,0 +1,31 @@
+---
+alltest:
+  - businessTests:
+      - case: POST Site Contract Success
+        http:
+          method: POST
+          path: /api/billing/sitecontracts
+          body: {
+            "siteId": $siteId$,
+            "name": "contractTest",
+            "startDate": "2022-06-01T09:21:55.000Z",
+            "endDate": "2022-06-30T09:21:57.000Z",
+            "actionWhenContractEnds": "doNothing",
+            "siteContractAttachments": [
+            {
+              "name": "test_jpg.jpg",
+              "attachment": "/$fileKey$"
+            }
+            ]
+          }
+        expect:
+          responsestate: 201
+          responsejsonschemal:
+          responseitemcheck: {
+            "siteId": $siteId,
+            "name": "contractTest"
+          }
+          dbcheck: None
+          customcheck: {}
+          aftercaseaction: DELETE
+          aftercasepath: /api/billing/sitecontracts/$id$

@@ -1,0 +1,87 @@
+---
+alltest:
+- businessTests:
+  - case: update a contact identity by id
+    http:
+      method: PUT
+      path: /api/contact/contactIdentities/$id$?siteid=$siteId$
+      body: {
+            "contactIdentityType":"SMS",
+            "value":"+111000",
+            "name":"",
+            "screenName":"",
+            "avatarUrl":"",
+            "displayName":"",
+            "infoUrl":"",
+            "OriginalContactPageUrl":""
+      }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+            "contactIdentityType":"SMS",
+            "value":"+111000"
+      }
+      customcheck: {}
+
+  - case: update a contact identity by no exist id
+    http:
+      method: PUT
+      path: /api/contact/contactIdentities/00000000-1111-2222-3333-000011112222?siteid=$siteId$
+      body: {
+            "contactIdentityType":"SMS",
+            "value":"+111000110",
+            "name":"",
+            "screenName":"",
+            "avatarUrl":"",
+            "displayName":"",
+            "infoUrl":"",
+            "OriginalContactPageUrl":""
+      }
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+
+  - case: update a contact identity with no exists identity type
+    http:
+      method: PUT
+      path: /api/contact/contactIdentities/$id$?siteid=$siteId$
+      body: {
+            "contactIdentityType":"test",
+            "value":"+111000",
+            "name":"",
+            "screenName":"",
+            "avatarUrl":"",
+            "displayName":"",
+            "infoUrl":"",
+            "OriginalContactPageUrl":""
+      }
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}
+
+  - case: update a contact identity with exists identity type
+    http:
+      method: PUT
+      path: /api/contact/contactIdentities/$id$?siteid=$siteId$
+      body: {
+            "contactIdentityType":"Email",
+            "value":"mkjha@1sd.com",
+            "name":"",
+            "screenName":"",
+            "avatarUrl":"",
+            "displayName":"",
+            "infoUrl":"",
+            "OriginalContactPageUrl":""
+      }
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}

@@ -1,0 +1,24 @@
+---
+alltest:
+- businessTests:
+  - case: delete a partner oauth by id
+    http:
+      method: DELETE
+      path: /api/Global/oAuthClients/$id$?partnerid=$partnerId$
+      body: {}
+    expect:
+      responsestate: 204
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+
+  - case: delete a partner oauth by no exist id
+    http:
+      method: DELETE
+      path: /api/Global/oAuthClients/11111111-2222-3333-4444-123412341234?partnerid=$partnerId$
+      body: {}
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}

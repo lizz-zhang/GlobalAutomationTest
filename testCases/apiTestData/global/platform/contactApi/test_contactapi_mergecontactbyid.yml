@@ -1,0 +1,77 @@
+---
+alltest:
+- businessTests:
+  - case: Success merge contact with id
+    http:
+      method: POST
+      path: /api/contact/contacts/$id$:merge?siteid=$siteId$
+      body: {
+        "contactId": "$contactId$"
+    }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/contacts/$id$
+
+  - case: Failed Merge Contacts with invalid contactId
+    http:
+      method: POST
+      path: /api/contact/contacts/$id$:merge?siteid=$siteId$
+      body: {
+        "contactId": "aaaaaa"
+    }
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/contacts/$id$
+
+  - case: Faild Merge Contacts with invalid id
+    http:
+      method: POST
+      path: /api/contact/contacts/aaaaaa:merge?siteid=$siteId$
+      body: {
+        "contactId": "$contactId$"
+    }
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/contacts/$id$
+
+  - case: Faild Merge Contacts with id not existed
+    http:
+      method: POST
+      path: /api/contact/contacts/7C6601B5-0000-0000-0000-69FF863C03B2:merge?siteid=$siteId$
+      body: {
+        "contactId": "$contactId$"
+    }
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/contacts/$id$
+
+  - case: Faild Merge Contacts with ContactId not existed
+    http:
+      method: POST
+      path: /api/contact/contacts/$id$:merge?siteid=$siteId$
+      body: {
+        "contactId": "7C6601B5-0000-0000-0000-69FF863C03B2"
+    }
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/contacts/$id$

@@ -1,0 +1,51 @@
+---
+alltest:
+  - businessTests:
+      - case: Post Login IP Allowlist Successfully
+        http:
+          method: POST
+          path: /api/global/loginIpAllowlists
+          body: {
+            "ipRangeFrom": "2.1.1.1",
+            "ipRangeTo": "2.1.1.10"
+          }
+        expect:
+          responsestate: 201
+          responsejsonschemal:
+          responseitemcheck: {
+            "ipRangeFrom": "2.1.1.1",
+            "ipRangeTo": "2.1.1.10"
+          }
+          dbcheck: None
+          customcheck: {}
+          aftercaseaction: DELETE
+          aftercasepath: /api/global/loginIpAllowlists/$id$
+      - case: Post Login IP Allowlist Failed. Because ipRangeFrom is not Correct
+        http:
+          method: POST
+          path: /api/global/loginIpAllowlists
+          body: {
+            "ipRangeFrom": "2.1.1.256",
+            "ipRangeTo": "2.1.1.10"
+          }
+        expect:
+          responsestate: 400
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}
+  - illegalInputTest:
+      - case: Post Login IP Allowlist Failed. Because the Required Field Miss
+        http:
+          method: POST
+          path: /api/global/loginIpAllowlists
+          body: {
+            "ipRangeFrom": "2.1.1.1",
+            "ipRangeTo": "2.1.1.10"
+          }
+        expect:
+          responsestate: 400
+          requirefield: ['ipRangeFrom','ipRangeTo']
+          error:
+          errormessage:
+          customcheck:

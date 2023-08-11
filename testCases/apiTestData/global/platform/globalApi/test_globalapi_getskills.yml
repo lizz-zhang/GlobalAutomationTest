@@ -1,0 +1,17 @@
+---
+alltest:
+- businessTests:
+  - case: get skills
+    http:
+      method: GET
+      path: /api/global/skills?pagesize=50&siteid=$siteId$
+      body: {
+      }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+       "skills.[*].description":"test skill"
+      }
+      customcheck: {}
+

@@ -1,0 +1,47 @@
+---
+alltest:
+  - businessTests:
+      - case: Post Extend FreeTrial Days Successfully
+        http:
+          method: POST
+          path: /api/billing/sitebilling/extendFreeTrialDays?partnerId=10000
+          body: {
+            "siteId": $siteId$,
+            "day": 300
+          }
+        expect:
+          responsestate: 200
+          responsejsonschemal:
+          responseitemcheck: {
+            "siteId": $siteId$
+          }
+          dbcheck: None
+          customcheck: {}
+      - case: Post Extend FreeTrial Days Failed. Because siteId is not exist
+        http:
+          method: POST
+          path: /api/billing/sitebilling/extendFreeTrialDays?partnerId=10000
+          body: {
+            "siteId": 123456,
+            "day": 300
+          }
+        expect:
+          responsestate: 500
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}
+      - case: Post Extend FreeTrial Days Failed. Because day Filed Type Invaild
+        http:
+          method: POST
+          path: /api/billing/sitebilling/extendFreeTrialDays?partnerId=10000
+          body: {
+            "siteId": $siteId$,
+            "day": "a"
+          }
+        expect:
+          responsestate: 400
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}

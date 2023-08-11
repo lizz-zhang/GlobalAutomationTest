@@ -1,0 +1,49 @@
+---
+alltest:
+- businessTests:
+  - case: put a agent by id
+    http:
+      method: PUT
+      path: /api/global/agents/$id$?siteid=$siteId$
+      body: {
+        "email":"initial@11.com",
+        "displayName":"initial 11",
+        "firstName":"initial",
+        "lastName":"11",
+        "isAdmin":false,
+        "timeZone":"Pacific Standard Time",
+        "datetimeFormat":"YYYY/MM/DD HH:mm:ss",
+        "language": "en"
+    }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+         "email":"initial@11.com",
+         "displayName":"initial 11",
+         "firstName":"initial",
+         "lastName":"11",
+         "isAdmin":false,
+      }
+      customcheck: {}
+
+  - case: put a agent by no exist id
+    http:
+      method: PUT
+      path: /api/global/agents/00000000-1111-2222-3333-000011112222?siteid=$siteId$
+      body: {
+        "email":"initial@11.com",
+        "displayName":"initial 11",
+        "firstName":"initial",
+        "lastName":"11",
+        "isAdmin":false,
+        "timeZone":"Pacific Standard Time",
+        "datetimeFormat":"YYYY/MM/DD HH:mm:ss",
+        "language": "en"
+    }
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}

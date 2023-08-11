@@ -1,0 +1,18 @@
+---
+alltest:
+- businessTests:
+  - case: Success get contacts by pageIndex & pageSize
+    http:
+      method: POST
+      path: /api/contact/contacts:query?siteid=$siteId$
+      body: {
+        "pageIndex":1,
+        "pageSize":1
+}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}
+

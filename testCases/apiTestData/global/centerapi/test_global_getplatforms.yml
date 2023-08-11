@@ -1,0 +1,13 @@
+---
+alltest:
+- businessTests:
+  - case: get platforms
+    http:
+      method: GET
+      path: /centerapi/api/v1/dataservice/platforms?pageIndex=1&pageSize=10
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}

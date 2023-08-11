@@ -1,0 +1,26 @@
+---
+alltest:
+- businessTests:
+  - case: get child partner's Integration Config
+    http:
+      method: GET
+      path: /api/Global/childPartners/$id$/partnerIntegrationConfig
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}
+
+  - case: get child partner's Integration Config by no exist id
+    http:
+      method: GET
+      path: /api/Global/childPartners/199999/partnerIntegrationConfig
+      body: {}
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}

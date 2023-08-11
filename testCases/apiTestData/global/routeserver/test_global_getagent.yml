@@ -1,0 +1,14 @@
+---
+alltest:
+- businessTests:
+  - case: get agent
+    http:
+      method: GET
+      path: /api/v1/router/agents/getbyemail/?email=$email$&partnerid=10000
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+

@@ -1,0 +1,64 @@
+---
+alltest:
+- businessTests:
+  - case: Update the agentSsoConfig successfully
+    http:
+      method: PUT
+      path: /api/global/agentSsoConfig?siteid=$siteId$
+      body: {
+        "isEnabled": "true",
+        "protocolType": "samlSso",
+        "samlSSOUrl": "https://dev-5693083.okta.com/app/dev-5693083_livechat3_1/exk60lbzprslLXDVv5d7/sso/saml",
+        "samlLogoutUrl": "",
+        "samlCertificate": "-----BEGIN CERTIFICATE-----\nMIIDpjCCAo6gAwIBAgIGAYJY9AxUMA0GCSqGSIb3DQEBCwUAMIGTMQswCQYDVQQGEwJVUzETMBEG\nA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEU\nMBIGA1UECwwLU1NPUHJvdmlkZXIxFDASBgNVBAMMC2Rldi01NjkzMDgzMRwwGgYJKoZIhvcNAQkB\nFg1pbmZvQG9rdGEuY29tMB4XDTIyMDgwMTEwMjgyNVoXDTMyMDgwMTEwMjkyNFowgZMxCzAJBgNV\nBAYTAlVTMRMwEQYDVQQIDApDYWxpZm9ybmlhMRYwFAYDVQQHDA1TYW4gRnJhbmNpc2NvMQ0wCwYD\nVQQKDARPa3RhMRQwEgYDVQQLDAtTU09Qcm92aWRlcjEUMBIGA1UEAwwLZGV2LTU2OTMwODMxHDAa\nBgkqhkiG9w0BCQEWDWluZm9Ab2t0YS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB\nAQCxZ0zNAJE7iyv33C6WMjdgrW7DPyJwBkG83anLLYj6aoXOW6sk9w7qml3EriCz0xUoPf7Ao7jN\n2vvCherk6PDRHH7OFPQP6xrSqNqbauMUVTDMnFO/+sYAXJKKIJoXKE1ZlC/lDMMR4VV7xFu+qSx+\nWnC7+aFztu3p0h7sNd68rk1QVPajrRnfO5mp7dnJmLg+2pNuLYF6EDEp33kpwN/xgLWL4c39B1OW\nHkDRTbHJ8RWgvHXNo2aIKFBNd0nUDEyjb6qV1wj40B6WoAgbn9ejpAbzDbJw0SlmOc9O1rLrZzwq\nCJDCu3N1+c3/FmLRiXIpjoRAhBoGVBrNr0BqNCQ3AgMBAAEwDQYJKoZIhvcNAQELBQADggEBAGpl\nIFViNcGwd9sw52oql/b0aOmnI+y5mRJmWBV/gW0AF+yiUKH66qrp44bC5DT29NQmhUPLpxtiIlYn\nwDMuC10XHeDuoaBolo+o9Wb7DYxjgdg0pVTH6MsSbyltVjC7D6n54z4ulJYjDT+uqxWCvtosKWKm\n3+nLCgONcZB4gXUq1/Gk/hI5tCOX5U/jwFQ9RbOzsnVB1YExuAnF5jz8m+b6WVDUHzewowdvUtkH\n9ZO5k0DnrWEOvJMZ8W0iRYIo/WG8QMcnvHUYiPukSg+fcUBLoDZyN9c6JZYpTk+dWMxMU6gcaX9W\nu4CDSkoKtdM92UsSvP9AH4qWlIJMSU5qw5I=\n-----END CERTIFICATE-----",
+        "jwtLoginUrl": "",
+        "jwtLogoutUrl": "",
+        "jwtSecret": ""
+    }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+        }
+      customcheck: {}
+  - case: Update the agentSsoConfig failed with jwtLoginUrl is null
+    http:
+      method: PUT
+      path: /api/global/agentSsoConfig?siteid=$siteId$
+      body: {
+       "isEnabled": "false",
+        "protocolType": "jwtSso",
+        "samlSSOUrl": "https://portal.comm100dev.io",
+        "samlLogoutUrl": "",
+        "samlCertificate": "-----BEGIN CERTIFICATE-----\nMIIDpjCCAo6gAwIBAgIGAYJY9AxUMA0GCSqGSIb3DQEBCwUAMIGTMQswCQYDVQQGEwJVUzETMBEG\nA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEU\nMBIGA1UECwwLU1NPUHJvdmlkZXIxFDASBgNVBAMMC2Rldi01NjkzMDgzMRwwGgYJKoZIhvcNAQkB\nFg1pbmZvQG9rdGEuY29tMB4XDTIyMDgwMTEwMjgyNVoXDTMyMDgwMTEwMjkyNFowgZMxCzAJBgNV\nBAYTAlVTMRMwEQYDVQQIDApDYWxpZm9ybmlhMRYwFAYDVQQHDA1TYW4gRnJhbmNpc2NvMQ0wCwYD\nVQQKDARPa3RhMRQwEgYDVQQLDAtTU09Qcm92aWRlcjEUMBIGA1UEAwwLZGV2LTU2OTMwODMxHDAa\nBgkqhkiG9w0BCQEWDWluZm9Ab2t0YS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB\nAQCxZ0zNAJE7iyv33C6WMjdgrW7DPyJwBkG83anLLYj6aoXOW6sk9w7qml3EriCz0xUoPf7Ao7jN\n2vvCherk6PDRHH7OFPQP6xrSqNqbauMUVTDMnFO/+sYAXJKKIJoXKE1ZlC/lDMMR4VV7xFu+qSx+\nWnC7+aFztu3p0h7sNd68rk1QVPajrRnfO5mp7dnJmLg+2pNuLYF6EDEp33kpwN/xgLWL4c39B1OW\nHkDRTbHJ8RWgvHXNo2aIKFBNd0nUDEyjb6qV1wj40B6WoAgbn9ejpAbzDbJw0SlmOc9O1rLrZzwq\nCJDCu3N1+c3/FmLRiXIpjoRAhBoGVBrNr0BqNCQ3AgMBAAEwDQYJKoZIhvcNAQELBQADggEBAGpl\nIFViNcGwd9sw52oql/b0aOmnI+y5mRJmWBV/gW0AF+yiUKH66qrp44bC5DT29NQmhUPLpxtiIlYn\nwDMuC10XHeDuoaBolo+o9Wb7DYxjgdg0pVTH6MsSbyltVjC7D6n54z4ulJYjDT+uqxWCvtosKWKm\n3+nLCgONcZB4gXUq1/Gk/hI5tCOX5U/jwFQ9RbOzsnVB1YExuAnF5jz8m+b6WVDUHzewowdvUtkH\n9ZO5k0DnrWEOvJMZ8W0iRYIo/WG8QMcnvHUYiPukSg+fcUBLoDZyN9c6JZYpTk+dWMxMU6gcaX9W\nu4CDSkoKtdM92UsSvP9AH4qWlIJMSU5qw5I=\n-----END CERTIFICATE-----",
+        "jwtLoginUrl": null,
+        "jwtLogoutUrl": "",
+        "jwtSecret": ""}
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {
+         "error":'ParameterMissing',
+      }
+      customcheck: {}
+  - case: Update the agentSsoConfig failed with samlSSOUrl Invalid
+    http:
+      method: PUT
+      path: /api/global/agentSsoConfig?siteid=$siteId$
+      body: {
+        "isEnabled": "false",
+        "protocolType": "samlSso",
+        "samlSSOUrl": "ht",
+        "samlLogoutUrl": "",
+        "samlCertificate": "-----BEGIN CERTIFICATE-----\nMIIDpjCCAo6gAwIBAgIGAYJY9AxUMA0GCSqGSIb3DQEBCwUAMIGTMQswCQYDVQQGEwJVUzETMBEG\nA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEU\nMBIGA1UECwwLU1NPUHJvdmlkZXIxFDASBgNVBAMMC2Rldi01NjkzMDgzMRwwGgYJKoZIhvcNAQkB\nFg1pbmZvQG9rdGEuY29tMB4XDTIyMDgwMTEwMjgyNVoXDTMyMDgwMTEwMjkyNFowgZMxCzAJBgNV\nBAYTAlVTMRMwEQYDVQQIDApDYWxpZm9ybmlhMRYwFAYDVQQHDA1TYW4gRnJhbmNpc2NvMQ0wCwYD\nVQQKDARPa3RhMRQwEgYDVQQLDAtTU09Qcm92aWRlcjEUMBIGA1UEAwwLZGV2LTU2OTMwODMxHDAa\nBgkqhkiG9w0BCQEWDWluZm9Ab2t0YS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB\nAQCxZ0zNAJE7iyv33C6WMjdgrW7DPyJwBkG83anLLYj6aoXOW6sk9w7qml3EriCz0xUoPf7Ao7jN\n2vvCherk6PDRHH7OFPQP6xrSqNqbauMUVTDMnFO/+sYAXJKKIJoXKE1ZlC/lDMMR4VV7xFu+qSx+\nWnC7+aFztu3p0h7sNd68rk1QVPajrRnfO5mp7dnJmLg+2pNuLYF6EDEp33kpwN/xgLWL4c39B1OW\nHkDRTbHJ8RWgvHXNo2aIKFBNd0nUDEyjb6qV1wj40B6WoAgbn9ejpAbzDbJw0SlmOc9O1rLrZzwq\nCJDCu3N1+c3/FmLRiXIpjoRAhBoGVBrNr0BqNCQ3AgMBAAEwDQYJKoZIhvcNAQELBQADggEBAGpl\nIFViNcGwd9sw52oql/b0aOmnI+y5mRJmWBV/gW0AF+yiUKH66qrp44bC5DT29NQmhUPLpxtiIlYn\nwDMuC10XHeDuoaBolo+o9Wb7DYxjgdg0pVTH6MsSbyltVjC7D6n54z4ulJYjDT+uqxWCvtosKWKm\n3+nLCgONcZB4gXUq1/Gk/hI5tCOX5U/jwFQ9RbOzsnVB1YExuAnF5jz8m+b6WVDUHzewowdvUtkH\n9ZO5k0DnrWEOvJMZ8W0iRYIo/WG8QMcnvHUYiPukSg+fcUBLoDZyN9c6JZYpTk+dWMxMU6gcaX9W\nu4CDSkoKtdM92UsSvP9AH4qWlIJMSU5qw5I=\n-----END CERTIFICATE-----",
+        "jwtLoginUrl": "",
+        "jwtLogoutUrl": "",
+        "jwtSecret": ""
+    }
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {
+         "error":'ParameterFormatIncorrect',
+      }
+      customcheck: {}

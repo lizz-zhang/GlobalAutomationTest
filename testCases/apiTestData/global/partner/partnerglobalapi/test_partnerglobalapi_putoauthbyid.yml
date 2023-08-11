@@ -1,0 +1,59 @@
+---
+alltest:
+- businessTests:
+  - case: put a partner oauth by id
+    http:
+      method: PUT
+      path: /api/Global/oAuthClients/$id$?partnerid=$partnerId$
+      body: {
+        "name": "Update name",
+        "redirectUris": "https://www.baidu.com.update",
+        "grantTypes": "password",
+        "secret": "update_oauth_secret",
+    }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+        "name": "Update name",
+        "redirectUris": "https://www.baidu.com.update",
+        "grantTypes": "password",
+        "secret": "update_oauth_secret",
+      }
+      customcheck: {}
+
+  - case: put a partner oauth by no exist id
+    http:
+      method: PUT
+      path: /api/Global/oAuthClients/11111111-2222-3333-4444-123412341234?partnerid=$partnerId$
+      body: {
+        "name": "Initial name",
+        "redirectUris": "https://www.baidu.com",
+        "grantTypes": "password,authorization_code",
+        "secret": "oauth_secret",
+    }
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}
+
+- illegalInputTest:
+  - case: update partner oauth no required field
+    http:
+      method: PUT
+      path: /api/Global/oAuthClients/$id$?partnerid=$partnerId$
+      body: {
+        "name": "Initial name",
+        "redirectUris": "https://www.baidu.com",
+        "grantTypes": "password,authorization_code",
+        "secret": "oauth_secret",
+    }
+    expect:
+          responsestate: 400
+          requirefield: ['name','redirectUris','grantTypes','secret']
+          error:
+          errormessage:
+          customcheck:
+          responseitemcheck:

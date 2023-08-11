@@ -1,0 +1,25 @@
+---
+alltest:
+  - businessTests:
+      - case: Get a single Permission Successfully
+        http:
+          method: GET
+          path: /api/global/permissions/1
+          body: {}
+        expect:
+          responsestate: 200
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}
+      - case: Get a single Permission Failed. Because the id is not exist
+        http:
+          method: GET
+          path: /api/global/permissions/100
+          body: {}
+        expect:
+          responsestate: 404
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}

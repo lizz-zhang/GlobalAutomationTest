@@ -1,0 +1,49 @@
+---
+alltest:
+  - businessTests:
+      - case: Update Site Contract Success
+        http:
+          method: PUT
+          path: /api/billing/sitecontracts/$id$
+          body: {
+            "siteId": $siteId$,
+            "name": "contractTestUpdate",
+            "startDate": "2022-07-01T09:21:55.000Z",
+            "endDate": "2022-07-31T09:21:57.000Z",
+            "actionWhenContractEnds": "StopService"
+          }
+        expect:
+          responsestate: 200
+          responsejsonschemal:
+          responseitemcheck: {
+            "siteId": $siteId$,
+            "name": "contractTestUpdate"
+          }
+          dbcheck: None
+          customcheck: {}
+          aftercaseaction: PUT
+          aftercasepath: /api/billing/sitecontracts/$id$
+          aftercasebody: {
+            "siteId": $siteId$,
+            "name": "contractTest",
+            "startDate": "2022-06-01T09:21:55.000Z",
+            "endDate": "2022-06-30T09:21:57.000Z",
+            "actionWhenContractEnds": "doNothing"
+          }
+      - case: Update Site Contract Failed. Because id is not Exist
+        http:
+          method: PUT
+          path: /api/billing/sitecontracts/11111111-1111-1111-1111-111111111111
+          body: {
+            "siteId": $siteId$,
+            "name": "contractTestUpdate",
+            "startDate": "2022-07-01T09:21:55.000Z",
+            "endDate": "2022-07-31T09:21:57.000Z",
+            "actionWhenContractEnds": "StopService"
+          }
+        expect:
+          responsestate: 404
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}

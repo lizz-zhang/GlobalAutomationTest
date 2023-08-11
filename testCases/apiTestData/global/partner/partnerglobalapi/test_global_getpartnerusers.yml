@@ -1,0 +1,16 @@
+---
+alltest:
+- businessTests:
+  - case: get agents
+    http:
+      method: GET
+      path: /api/Global/partnerUsers?pageIndex=1&pageSize=500&partnerId=$partnerId$
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+         "partnerUsers.[*].name":'test partner agent'
+      }
+      customcheck: {}
+

@@ -1,0 +1,28 @@
+---
+alltest:
+- businessTests:
+  - case: get a partner user by id
+    http:
+      method: GET
+      path: /api/Global/partnerUsers?id=$id$&pageSize=50
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+         "partnerUsers.[*].name":"test partner agent"
+      }
+      customcheck: {}
+
+  - case: get a partner user by no exist id
+    http:
+      method: GET
+      path: /api/Global/partnerUsers?id=11111111-2222-3333-4444-123412341234&pageSize=50
+      body:
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+         "total":"0"
+      }
+      customcheck: {}

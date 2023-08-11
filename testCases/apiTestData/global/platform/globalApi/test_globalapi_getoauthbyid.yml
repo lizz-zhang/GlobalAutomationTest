@@ -1,0 +1,29 @@
+---
+alltest:
+- businessTests:
+  - case: get an oauth-platform by id
+    http:
+      method: GET
+      path: /api/global/oAuthClients/$id$?siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+         "name":'Initial name'
+      }
+      customcheck: {}
+
+  - case: get an oauth-platform by not existed id
+    http:
+      method: GET
+      path: /api/global/oAuthClients/00000000-1111-2222-3333-000011112222?siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}
+
+

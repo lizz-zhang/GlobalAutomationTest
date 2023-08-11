@@ -1,0 +1,41 @@
+---
+alltest:
+- businessTests:
+  - case: put child partner's Integration Config
+    http:
+      method: PUT
+      path: /api/Global/childPartners/$id$/partnerIntegrationConfig
+      body: {
+        "isAgentLogoutEnabled":true,
+        "isAgentManagementEnabled":true,
+        "isBillingEnabled":true,
+        "isSystemEmailNotificationEnabled":true,
+        "controlPanelCustomJs":"",
+        "agentConsoleCustomJs":"",
+      }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+        "isAgentLogoutEnabled":true
+      }
+      customcheck: {}
+
+  - case: put child partner's Integration Config by no exist id
+    http:
+      method: PUT
+      path: /api/Global/childPartners/199999/partnerIntegrationConfig
+      body: {
+        "isAgentLogoutEnabled": true,
+        "isAgentManagementEnabled": true,
+        "isBillingEnabled": true,
+        "isSystemEmailNotificationEnabled": true,
+        "controlPanelCustomJs": "",
+        "agentConsoleCustomJs": "",
+      }
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}

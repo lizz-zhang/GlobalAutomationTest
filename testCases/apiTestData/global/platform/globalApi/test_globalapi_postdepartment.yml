@@ -1,0 +1,23 @@
+---
+alltest:
+- businessTests:
+  - case: post department
+    http:
+      method: POST
+      path: /api/global/departments?siteid=$siteId$
+      body: {
+        "name": "$random$",
+        "description": "initial department",
+        "isAvailableInLiveChat": true,
+        "isAvailableInTicketingAndMessaging": true,
+        "agentIds": []
+      }
+    expect:
+      responsestate: 201
+      responsejsonschemal:
+      responseitemcheck: {
+         "description":'initial department',
+      }
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/global/departments/$id$

@@ -1,0 +1,16 @@
+---
+alltest:
+- businessTests:
+  - case: get roles
+    http:
+      method: GET
+      path: /api/Global/partnerRoles?pageIndex=1&pageSize=50
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+        "partnerRoles.[*].name":"Administrators"
+      }
+      customcheck: {}
+

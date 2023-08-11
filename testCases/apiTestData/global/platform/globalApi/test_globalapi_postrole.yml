@@ -1,0 +1,22 @@
+---
+alltest:
+- businessTests:
+  - case: post a role
+    http:
+      method: POST
+      path: /api/global/roles?siteid=$siteId$
+      body: {
+        "name": "post_role_123",
+        "type": "Custom",
+        "agentIds": []
+      }
+    expect:
+      responsestate: 201
+      responsejsonschemal:
+      responseitemcheck: {
+        "name":"post_role_123"
+      }
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/global/roles/$id$
+

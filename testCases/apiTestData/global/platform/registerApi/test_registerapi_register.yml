@@ -1,0 +1,47 @@
+---
+alltest:
+- businessTests:
+  - case: register a comm100 site
+    http:
+      method: POST
+      path: /registerapi/register/registernewsite
+      head: {
+              "Content-Type":'application/json',
+              "Authorization":'apikey EBB97B32-60FE-4DE9-861E-40D0C2299D54',
+              "User-Agent":'Apache-HttpClient/4.5.12 (Java/1.8.0_40)'
+      }
+      body: {
+        "email": "",
+        "platformId": 100,
+        "partnerId": 10000,
+        "registerType": 2,
+        "registerFieldsInfo": "{\"aa\":\"autocreatesite@test.com\",\"a\":\"1\",\"b\":\"1qaz_2wsx\",\"ln\":\"1\",\"e\":\"UTC-08\",\"language\":\"en\",\"g\":233,\"cou\":\"Argentina\",\"dateTimeFormat\":\"MM/DD/YYYY HH:mm:ss\",\"platformId\":100,\"profitCenterId\":\"01000000-0000-0000-0000-271000002710\",\"tagIds\":[]}"
+      }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+        "errorCode": 0
+      }
+  - case: register a child partner site
+    http:
+      method: POST
+      path: /registerapi/register/registernewsite
+      head: {
+              "Content-Type":'application/json',
+              "Authorization":'apikey EBB97B32-60FE-4DE9-861E-40D0C2299D54',
+              "User-Agent":'Apache-HttpClient/4.5.12 (Java/1.8.0_40)'
+      }
+      body: {
+        "email": "",
+        "platformId": 100,
+        "partnerId": 500001,
+        "registerType": 2,
+        "registerFieldsInfo": "{\"aa\":\"autocreatesite@test.com\",\"a\":\"1\",\"b\":\"1qaz_2wsx\",\"ln\":\"1\",\"e\":\"UTC-08\",\"language\":\"en\",\"g\":10880,\"cou\":\"Argentina\",\"dateTimeFormat\":\"MM/DD/YYYY HH:mm:ss\",\"platformId\":100,\"profitCenterId\":\"01000000-0000-0000-0000-271000002710\",\"tagIds\":[]}"
+      }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+        "errorCode": 0
+      }

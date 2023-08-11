@@ -1,0 +1,41 @@
+---
+alltest:
+- businessTests:
+  - case: post child partner
+    http:
+      method: POST
+      path: /api/Global/childPartners
+      body: {
+        "partnerUsers": [
+        {
+            "email": "$random$@partner.com",
+            "confirmEmail": "$partneremail$",
+            "password": "111111",
+            "confirmPassword": "111111"
+        }],
+        "companyName": "companyName",
+        "website": "https://www.baidu.com",
+        "contactName": "contactName",
+        "contactEmail": "partnerUsersTest@comm100.com",
+        "contactPhone": "contactPhone",
+        "contactTitle": "contactTitle",
+        "countryOrRegion": "Ethiopia",
+        "siteInvoiceBillTo": "Partner",
+        "languageIds": [
+                "en",
+                "zh-CN"
+            ],
+        "canCustomizeBrand": false,
+        "isUmbrellaCustomer": false,
+        "partnerBrandConfig": {
+              "agentConsoleLogoCodeSnippet": "data:text/plain;base64,",
+              "controlPanelLogoCodeSnippet": "data:text/plain;base64,",
+            }
+    }
+    expect:
+      responsestate: 201
+      responsejsonschemal:
+      responseitemcheck: {
+         "companyName":'companyName',
+      }
+      customcheck: {}

@@ -1,0 +1,45 @@
+---
+alltest:
+- businessTests:
+  - case: switch site status
+    http:
+      method: PUT
+      path: /api/billing/site/switchStatus?partnerId=$partnerId$
+      body: {
+        "siteId": "$siteId$",
+        "status": "suspended",
+        "isSpam": false,
+        "reason": "22"
+    }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+
+      }
+      customcheck: {}
+      aftercaseaction: PUT
+      aftercasepath: /api/billing/site/switchStatus?partnerId=$partnerId$
+      aftercasebody: {
+        "siteId": "$siteId$",
+        "status": "open",
+        "isSpam": false,
+        "reason": "22"
+    }
+  - case: switch site status by wrong siteid
+    http:
+      method: PUT
+      path: /api/billing/site/switchStatus?partnerId=$partnerId$
+      body: {
+        "siteId": "0",
+        "status": "suspended",
+        "isSpam": false,
+        "reason": "22"
+    }
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {
+
+      }
+      customcheck: {}

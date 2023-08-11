@@ -1,0 +1,14 @@
+---
+alltest:
+  - businessTests:
+      - case: Get Agent Effective Permissions Successfully
+        http:
+          method: GET
+          path: /api/global/api/site/agenteffectivepermission?agentId=$agentId$
+          body: {}
+        expect:
+          responsestate: 200
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}

@@ -1,0 +1,15 @@
+---
+alltest:
+- businessTests:
+  - case: get stateorprovinces
+    http:
+      method: GET
+      path: /api/Global/stateorprovinces?pageIndex=1&pageSize=50
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}
+

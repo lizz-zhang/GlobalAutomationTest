@@ -1,0 +1,337 @@
+{
+  "agents":{
+      "createMethod": "POST",
+      "createPath": "/api/global/agents",
+      "body":{
+        "email":"$random$@$random2$.com",
+        "password":"1qaz_2wsx",
+        "displayName":"initial 1",
+        "firstName":"initial",
+        "lastName":"1",
+        "isAdmin":true,
+        "timeZone":"Pacific Standard Time",
+        "datetimeFormat":"YYYY/MM/DD HH:mm:ss",
+        "language": "en"
+      },
+      "deleteMethod": "DELETE",
+      "deletePath": "/api/global/agents/$id$"
+  },
+  "departments":{
+      "createMethod": "POST",
+      "createPath": "/api/global/departments",
+      "body":{
+        "name":"$random$",
+        "description":"initial department",
+        "isAvailableInLiveChat":true,
+        "isAvailableInTicketingAndMessaging":true,
+        "agentIds":[]
+      },
+      "deleteMethod": "DELETE",
+      "deletePath": "/api/global/departments/$id$"
+  },
+  "roles":{
+    "createMethod": "POST",
+    "createPath": "/api/global/roles",
+    "body":{
+        "name":"$random$",
+        "type":"Custom",
+        "agentIds":[]
+    },
+    "deleteMethod": "DELETE",
+    "deletePath": "/api/global/roles/$id$"
+  },
+  "oauth_platform": {
+      "createMethod": "POST",
+      "createPath": "/api/global/oAuthClients",
+      "body":{
+        "name":"Initial name",
+        "description":"Initial description",
+        "company":"Initial company",
+        "clientId":"$random$",
+        "redirectUris":"https://www.baidu.com",
+        "grantTypes":"1,2,3",
+        "scopes":"any",
+        "refreshTokenValidity":720,
+        "accessTokenValidity":12
+    },
+    "deleteMethod": "DELETE",
+    "deletePath": "/api/global/oAuthClients/$id$"
+  },
+  "oauth_partner": {
+      "createMethod": "POST",
+      "createPath": "/api/global/oAuthClients",
+      "body":{
+        "name": "Initial name",
+        "redirectUris": "https://www.baidu.com",
+        "grantTypes": "password,authorization_code",
+        "secret": "111111"
+    },
+    "deleteMethod": "DELETE",
+    "deletePath": "/api/global/oAuthClients/$id$",
+    "getAdminRoleIdPath": "/api/Global/partnerRoles?name=Administrators",
+    "getAdminRoleIdMethod": "GET"
+  },
+  "contacts":{
+      "createMethod": "POST",
+      "createPath": "/global/contacts",
+      "body":{
+        "name":"$random$",
+        "description": "initial contact description",
+        "firstName": "firstName1",
+        "lastName": "lastName1",
+        "alias": "alias1",
+        "title": "title1",
+        "company": "company1",
+        "fax": "fax1",
+        "phone": "phone1",
+        "mailingAddress": "mailingAddress1",
+        "city": "cityyyyyyyyy",
+        "stateOrProvince": "stateOrProvinceeeeeeeeee",
+        "countryOrRegion": "countryOrRegionnnnnnnnnnn",
+        "postalOrZipCode": "postalOrZipCodeeeeeeeee",
+        "mergeToContactId": "00000000-0000-0000-0000-000000000000",
+        "contactIdentities": [
+          {
+            "contactIdentityType": "visitor",
+            "name": "",
+            "value": "$randomInt$",
+            "avatarUrl": "",
+            "infoUrl": "",
+            "screenName": "",
+            "originalContactPageUrl": ""
+        }
+        ]
+      },
+      "deleteMethod": "DELETE",
+      "deletePath": "/global/contacts/$id$"
+  },
+  "contacts_new":{
+    "createMethod": "POST",
+    "createPath": "/api/contact/contacts",
+    "body":{
+      "name":"$random$",
+      "description": "initial contact description",
+      "firstName": "firstName",
+      "lastName": "lastName",
+      "alias": "alias",
+      "title": "title",
+      "company": "company",
+      "fax": "fax",
+      "phone": "phone",
+      "city": "cityyyyyyyyy",
+      "stateOrProvince": "stateOrProvinceeeeeeeeee",
+      "countryOrRegion": "countryOrRegionnnnnnnnnnn",
+      "postalOrZipCode": "postalOrZipCodeeeeeeeee",
+      "contactIdentities": [
+        {"contactIdentityType":"Email","value":"1@1.contact$random$","name":"","screenName":"","isDeleted":false},
+        {"contactIdentityType":"SMS","value":"+$randomInt$","SMS":"","screenName":"","isDeleted":false},
+        {"contactIdentityType":"Facebook","value":"FacebookPost$random$","name":"","screenName":"","isDeleted":false},
+        {"contactIdentityType":"Twitter","value":"TwitterPost$random$","name":"","screenName":"","isDeleted":false},
+        {"contactIdentityType":"WhatsApp","value":"WhatsAppPost$random$","name":"","screenName":"","isDeleted":false},
+        {"contactIdentityType":"Instagram","value":"InstagramPost$random$","name":"","screenName":"","isDeleted":false},
+        {"contactIdentityType":"Telegram","value":"TelegramPost$random$","name":"","screenName":"","isDeleted":false},
+        {"contactIdentityType":"Wechat","value":"WechatPost$random$","name":"","screenName":"","isDeleted":false},
+        {"contactIdentityType":"Line","value":"LinePost$random$","name":"","screenName":"","isDeleted":false},
+        {"contactIdentityType":"SSOID","value":"SSOIDPost$random$","name":"","screenName":"","isDeleted":false},
+        {"contactIdentityType":"ExternalID","value":"ExternalIDPost$random$","name":"","screenName":"","isDeleted":false},
+        {"contactIdentityType":"Visitor","value":"$random$a-1eef-4b8d-a9bc-ce2931657a7d","Visitor":"","screenName":"","isDeleted":false},
+        {"contactIdentityType":"SecureMessaging","value":"SecureMessagingPost$random$","name":"","screenName":"","isDeleted":false}
+      ]
+    },
+    "deleteMethod": "DELETE",
+    "deletePath": "/api/contact/contacts/$id$"
+},
+    "contacts_visitor":{
+    "createMethod": "POST",
+    "createPath": "/api/contact/contacts",
+    "body":{
+      "name":"$random$",
+      "description": "initial contact description",
+      "firstName": "firstName",
+      "lastName": "lastName",
+      "alias": "alias",
+      "title": "title",
+      "company": "company",
+      "fax": "fax",
+      "phone": "phone",
+      "city": "cityyyyyyyyy",
+      "stateOrProvince": "stateOrProvinceeeeeeeeee",
+      "countryOrRegion": "countryOrRegionnnnnnnnnnn",
+      "postalOrZipCode": "postalOrZipCodeeeeeeeee",
+      "contactIdentities": [
+        {"contactIdentityType":"Visitor","value":"$random$1-54c3-4881-b6cc-4be1e22dfb11","name":"","screenName":"","isDeleted":false}
+      ]
+    },
+    "deleteMethod": "DELETE",
+    "deletePath": "/api/contact/contacts/$id$"
+},
+  "partneragents":{
+      "createMethod": "POST",
+      "createPath": "/api/Global/partnerUsers?partnerId=$partnerId$",
+      "body":{
+          "email":"$random$@$random2$.com",
+          "name":"test partner agent",
+          "partnerRoleIds":[
+              "b5fb9921-0cc2-ec11-a83c-00155de0e608"
+          ],
+          "status":"active",
+          "phone":"",
+          "title":"",
+          "description":"",
+          "password":"1qaz_2wsx",
+          "confirmEmail":"temp@1.com",
+          "confirmPassword":"1qaz_2wsx"
+      },
+      "deleteMethod": "DELETE",
+      "deletePath": "/api/Global/partnerUsers/$id$?partnerId=$partnerId$",
+      "getAdminRoleIdPath": "/api/Global/partnerRoles?name=Administrators",
+      "getAdminRoleIdMethod": "GET"
+  },
+  "contact_fields":{
+    "createMethod": "POST",
+    "createPath": "/api/contact/fields",
+    "body":{
+    "name":"test text",
+    "isSystem":false,
+    "isIdentity":false,
+    "isVisible":true,
+    "isRequired":false,
+    "isReadOnly":false,
+    "type":"text",
+    "length":256,
+    "helpText":"",
+    "defaultValue":"",
+    "fieldOptions":[
+    ],
+    "linkUrl":""
+},
+    "deleteMethod": "DELETE",
+    "deletePath": "/api/contact/fields/$id$"
+  },
+  "contact_fields_reorder":{
+    "createMethod": "POST",
+    "createPath": "/api/contact/fields",
+    "body":{
+    "name":"test text $random$",
+    "isSystem":false,
+    "isIdentity":false,
+    "isVisible":true,
+    "isRequired":false,
+    "isReadOnly":false,
+    "type":"text",
+    "length":256,
+    "helpText":"",
+    "defaultValue":"",
+    "fieldOptions":[
+    ],
+    "linkUrl":""
+},
+    "deleteMethod": "DELETE",
+    "deletePath": "/api/contact/fields/$id$"
+  },
+  "sitecontracts":{
+      "createMethod": "POST",
+      "createPath": "/api/billing/sitecontracts",
+      "body":{
+	      "siteId": "$siteId$",
+	      "name": "contractTest",
+	      "startDate": "2022-06-01T09:21:55.000Z",
+	      "endDate": "2022-06-30T09:21:57.000Z",
+	      "actionWhenContractEnds": "doNothing",
+	      "siteContractAttachments": [{
+		      "name": "test_jpg.jpg",
+		      "attachment": "/$fileKey$"
+	}]
+},
+      "deleteMethod": "DELETE",
+      "deletePath": "/api/billing/sitecontracts/$id$"
+  },
+  "childpartner":{
+      "createMethod": "POST",
+      "createPath": "/api/Global/childPartners",
+      "body": {
+          "partnerUsers": [
+        {
+              "email": "$random$@partner.com",
+              "confirmEmail": "$partneremail$",
+              "password": "111111",
+              "confirmPassword": "111111"
+        }],
+          "companyName": "companyName",
+          "website": "https://www.baidu.com",
+          "contactName": "contactName",
+          "contactEmail": "partnerUsersTest@comm100.com",
+          "contactPhone": "contactPhone",
+          "contactTitle": "contactTitle",
+          "countryOrRegion": "Ethiopia",
+          "siteInvoiceBillTo": "Partner",
+          "languageIds": [
+                "en",
+                "zh-CN"
+            ],
+          "canCustomizeBrand": false,
+          "isUmbrellaCustomer": false,
+          "partnerBrandConfig": {
+              "agentConsoleLogoCodeSnippet": "data:text/plain;base64,",
+              "controlPanelLogoCodeSnippet": "data:text/plain;base64,",
+              "loginUrl": "",
+              "partnerPortalUrl": ""
+            }
+    },
+      "deleteMethod": "DELETE",
+      "deletePath": "/api/Global/childPartners/$id$",
+      "getAdminRoleIdPath": "/api/Global/partnerRoles?name=Administrators",
+      "getAdminRoleIdMethod": "GET"
+  },
+  "publiccannedmessagecategory":{
+      "createMethod": "POST",
+      "createPath": "/api/Global/publicCannedMessageCategories",
+      "body":{
+	      "name": "categorytest",
+	      "parentId": "$parentId$"
+},
+      "deleteMethod": "DELETE",
+      "deletePath": "/api/Global/publicCannedMessageCategories/$id$"
+  },
+  "publiccannedmessage":{
+      "createMethod": "POST",
+      "createPath": "/api/Global/publicCannedMessages",
+      "body":{
+	      "name": "canned message test$random$",
+	      "categoryId": "$categoryId$",
+          "message": "test"
+},
+      "deleteMethod": "DELETE",
+      "deletePath": "/api/Global/publicCannedMessages/$id$"
+  },
+    "skills":{
+    "createMethod": "POST",
+    "createPath": "/api/global/skills",
+    "body":{
+        "name":"$random$",
+        "description":"test skill",
+        "agentIds":[]
+    },
+    "deleteMethod": "DELETE",
+    "deletePath": "/api/global/skills/$id$"
+  },
+  "loginipallowlist":{
+      "createMethod": "POST",
+      "createPath": "/api/Global/loginIpAllowlists",
+      "body":{
+	      "ipRangeFrom": "1.1.1.1",
+	      "ipRangeTo": "1.1.1.10"
+},
+      "deleteMethod": "DELETE",
+      "deletePath": "/api/Global/loginIpAllowlists/$id$"
+  },
+    "awaystatus":{
+    "createMethod": "POST",
+    "createPath": "/api/global/agentAwayStatuses",
+    "body":{
+        "name":"test_status"
+    },
+    "deleteMethod": "DELETE",
+    "deletePath": "/api/global/agentAwayStatuses/$id$"
+  }
+}

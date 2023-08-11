@@ -1,0 +1,22 @@
+---
+alltest:
+- businessTests:
+  - case: post skill
+    http:
+      method: POST
+      path: /api/global/skills?siteid=$siteId$
+      body: {
+        "name": "$random$",
+        "description": "test skill",
+        "agentIds": [ ]
+      }
+    expect:
+      responsestate: 201
+      responsejsonschemal:
+      responseitemcheck: {
+       "description":"test skill"
+      }
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/global/skills/$id$
+

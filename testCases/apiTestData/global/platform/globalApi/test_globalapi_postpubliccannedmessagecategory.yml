@@ -1,0 +1,50 @@
+---
+alltest:
+  - businessTests:
+      - case: Post Public Canned Message Category Successfully
+        http:
+          method: POST
+          path: /api/global/publicCannedMessageCategories
+          body: {
+            "name": "categoryTest",
+            "parentId": $parentId$
+          }
+        expect:
+          responsestate: 201
+          responsejsonschemal:
+          responseitemcheck: {
+            "name": "categoryTest"
+          }
+          dbcheck: None
+          customcheck: {}
+          aftercaseaction: DELETE
+          aftercasepath: /api/global/publicCannedMessageCategories/$id$
+      - case: Post Public Canned Message Category Failed. Because parentId is not Exist
+        http:
+          method: POST
+          path: /api/global/publicCannedMessageCategories
+          body: {
+            "name": "categoryTest",
+            "parentId": '41a97d95-f2b1-4971-9303-14dd9e079f42'
+          }
+        expect:
+          responsestate: 404
+          responsejsonschemal:
+          responseitemcheck:
+          dbcheck: None
+          customcheck: {}
+  - illegalInputTest:
+      - case: Post Public Canned Message Category Failed. Because the Required Field Miss
+        http:
+          method: POST
+          path: /api/global/publicCannedMessageCategories
+          body: {
+            "name": "categoryTest",
+            "parentId": $parentId$
+          }
+        expect:
+          responsestate: 400
+          requirefield: ['name','parentId']
+          error:
+          errormessage:
+          customcheck:

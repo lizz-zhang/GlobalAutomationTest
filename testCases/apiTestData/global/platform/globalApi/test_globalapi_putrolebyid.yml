@@ -1,0 +1,38 @@
+---
+alltest:
+- businessTests:
+  - case: put a role by id
+    http:
+      method: PUT
+      path: /api/global/roles/$id$?siteid=$siteId$
+      body: {
+        "name": "put_role_123",
+        "type": "Custom",
+        "agentIds": [],
+        "description": "test description"
+    }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+        "name": "put_role_123",
+        "description": "test description"
+      }
+      customcheck: {}
+
+  - case: put a role by no exist id
+    http:
+      method: PUT
+      path: /api/global/roles/00000000-1111-2222-3333-000011112222?siteid=$siteId$
+      body: {
+        "name": "put_role_123",
+        "type": "Custom",
+        "agentIds": [],
+        "description": "test description"
+    }
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}

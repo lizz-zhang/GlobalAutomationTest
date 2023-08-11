@@ -1,0 +1,33 @@
+---
+alltest:
+  - businessTests:
+      - case: Update Site BillingConfig Success
+        http:
+          method: PUT
+          path: /api/billing/siteBillingConfigs/$siteId$?partnerId=10000
+          body: {
+            "isPricingVisible": false,
+            "isSubscriptionChangeByCustomerAllowed": false,
+            "isAgentsPurchasedInAdvance": false,
+            "isInvoiceVisibleToCustomer": false,
+            "isBillingEmailSentAutomatically": false,
+            "isBillingPopupAutomatically": false
+          }
+        expect:
+          responsestate: 200
+          responsejsonschemal:
+          responseitemcheck: {
+            "siteId":$siteId$
+          }
+          dbcheck: None
+          customcheck: {}
+          aftercaseaction: PUT
+          aftercasepath: /api/billing/siteBillingConfigs/$siteId$?partnerId=10000
+          aftercasebody: {
+            "isPricingVisible": true,
+            "isSubscriptionChangeByCustomerAllowed": true,
+            "isAgentsPurchasedInAdvance": true,
+            "isInvoiceVisibleToCustomer": true,
+            "isBillingEmailSentAutomatically": true,
+            "isBillingPopupAutomatically": true
+          }

@@ -1,0 +1,27 @@
+---
+alltest:
+- businessTests:
+  - case: post agent
+    http:
+      method: POST
+      path: /api/global/agents?siteid=$siteId$
+      body: {
+        "email":"$random$@$random2$.com",
+        "password":"111111",
+        "displayName":"test 1221",
+        "firstName":"test",
+        "lastName":"1221",
+        "isAdmin":true,
+        "timeZone":"Pacific Standard Time",
+        "datetimeFormat":"YYYY/MM/DD HH:mm:ss",
+        "language": "en"
+    }
+    expect:
+      responsestate: 201
+      responsejsonschemal:
+      responseitemcheck: {
+         "displayName":'test 1221',
+      }
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/global/agents/$id$

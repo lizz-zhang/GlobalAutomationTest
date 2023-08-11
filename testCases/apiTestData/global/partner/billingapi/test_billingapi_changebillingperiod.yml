@@ -1,0 +1,40 @@
+---
+alltest:
+  - businessTests:
+      - case: Post Change BillingPeriod Successfully
+        http:
+          method: POST
+          path: /api/billing/sitebilling/changeBillingPeriod?partnerId=10000
+          body: {
+            "billingPeriod": "quarterly",
+            "reason": "test",
+            "siteId": $siteId$
+          }
+        expect:
+          responsestate: 200
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}
+          aftercaseaction: POST
+          aftercasepath: /api/billing/sitebilling/changeBillingPeriod?partnerId=10000
+          aftercasebody: {
+            "billingPeriod": "monthly",
+            "reason": "test",
+            "siteId": $siteId$
+          }
+      - case: Post Change BillingPeriod Failed. Because the Site is not Trial Status
+        http:
+          method: POST
+          path: /api/billing/sitebilling/changeBillingPeriod?partnerId=10000
+          body: {
+            "billingPeriod": "quarterly",
+            "reason": "test",
+            "siteId": $siteId$
+          }
+        expect:
+          responsestate: 400
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}

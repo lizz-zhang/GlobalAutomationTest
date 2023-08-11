@@ -1,0 +1,25 @@
+---
+alltest:
+  - businessTests:
+      - case: Get Seat Count Successful
+        http:
+          method: GET
+          path: /api/billing/api/agent/seatcount/$siteId$?partnerId=10000
+          body: {}
+        expect:
+          responsestate: 200
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}
+      - case: Get Seat Count Failed. Because the siteId is not exist
+        http:
+          method: GET
+          path: /api/billing/api/agent/seatcount/123456?partnerId=10000
+          body: {}
+        expect:
+          responsestate: 404
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}

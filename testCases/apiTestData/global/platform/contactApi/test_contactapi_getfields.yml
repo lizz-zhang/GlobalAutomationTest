@@ -1,0 +1,14 @@
+---
+alltest:
+- businessTests:
+  - case: get contact fields
+    http:
+      method: GET
+      path: /api/contact/fields?siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}

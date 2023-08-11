@@ -1,0 +1,19 @@
+---
+alltest:
+  - businessTests:
+      - case: Put the Login IP Allowlist Config Successfully
+        http:
+          method: PUT
+          path: /api/global/loginIpAllowlistConfig
+          body: {
+              "isEnabled": false,
+              "isLoginIpAllowlistApplicableForMobileAccess":false
+          }
+        expect:
+          responsestate: 200
+          responsejsonschemal:
+          responseitemcheck: {
+              "isEnabled": false
+          }
+          dbcheck: None
+          customcheck: {}

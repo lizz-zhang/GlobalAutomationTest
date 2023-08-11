@@ -1,0 +1,51 @@
+---
+alltest:
+- businessTests:
+  - case: Success Reorder Contact Fields
+    http:
+      method: POST
+      path: /api/contact/fields:reorder?siteid=$siteId$
+      body: [
+        "$id1$",
+        "$id2$"
+      ]
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/fields/$id$?siteid=$siteId$
+
+  - case: Failed Reorder Contact Fields by invalid id
+    http:
+      method: POST
+      path: /api/contact/fields:reorder?siteid=$siteId$
+      body: [
+        "aaaa",
+        "bbbb"
+      ]
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/fields/$id$?siteid=$siteId$
+
+# this case will not success
+#  - case: Failed Reorder Contact Fields by id not existed
+#    http:
+#      method: POST
+#      path: /api/contact/fields:reorder?siteid=$siteId$
+#      body: [
+#        "11111d0d-0000-0000-0000-561b8c67233e",
+#        "111112ad-0000-0000-0000-00cce25e359b"
+#      ]
+#    expect:
+#      responsestate: 404
+#      responsejsonschemal:
+#      responseitemcheck: {}
+#      customcheck: {}
+#      aftercaseaction: DELETE
+#      aftercasepath: /api/contact/fields/$id$?siteid=$siteId$

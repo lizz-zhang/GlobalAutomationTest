@@ -1,0 +1,25 @@
+---
+alltest:
+  - businessTests:
+      - case: Delete Site Contract by id Success
+        http:
+          method: DELETE
+          path: /api/billing/sitecontracts/$id$
+          body: {}
+        expect:
+          responsestate: 204
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}
+      - case: Delete Site Contract by id Failed. Because id is not Exist
+        http:
+          method: DELETE
+          path: /api/billing/sitecontracts/11111111-1111-1111-1111-111111111111
+          body: {}
+        expect:
+          responsestate: 404
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}

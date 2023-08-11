@@ -1,0 +1,16 @@
+---
+alltest:
+- businessTests:
+  - case: get child partner by keywords
+    http:
+      method: GET
+      path: /api/Global/childPartners?include=partner&include=partnerBrandConfig&pageIndex=1&pageSize=50&partnerKeywords=companyName
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {
+         "companyName": "companyName"
+         }
+

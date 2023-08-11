@@ -1,0 +1,14 @@
+---
+alltest:
+  - businessTests:
+      - case: Get the list of Public Canned Message Categories Successfully
+        http:
+          method: GET
+          path: /api/global/publicCannedMessageCategories
+          body: {}
+        expect:
+          responsestate: 200
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}

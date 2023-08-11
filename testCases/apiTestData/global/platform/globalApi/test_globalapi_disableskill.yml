@@ -1,0 +1,17 @@
+---
+alltest:
+- businessTests:
+  - case: disable skill
+    http:
+      method: POST
+      path: /api/global/SkillConfig:disable?siteid=$siteId$
+      body: {
+      }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+       "isEnabled":false
+      }
+      customcheck: {}
+

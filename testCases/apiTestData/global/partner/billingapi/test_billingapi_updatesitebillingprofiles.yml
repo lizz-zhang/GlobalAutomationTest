@@ -1,0 +1,195 @@
+---
+alltest:
+  - businessTests:
+      - case: Update Site BillingProfile Success
+        http:
+          method: PUT
+          path: /api/billing/sitebillingprofiles/$siteId$?partnerId=10000
+          body: {
+            "firstName": "firstNameUpdate",
+            "lastName": "lastNameUpdate",
+            "companyName": "companyTestUpdate",
+            "email": "testupdate@1.com",
+            "phone": "",
+            "fax": "",
+            "countryOrRegion": "China",
+            "stateOrProvince": "",
+            "city": "",
+            "mailingAddress": "addressTest",
+            "postalOrZipCode": "",
+            "jobTitle": "",
+            "billTo": "testupdate@1.com",
+            "isChargedAutomatically": false,
+            "isEPayment": true,
+            "primaryPaymentTypeId": "Amex",
+            "primaryPayPalBillingAgreementId": "",
+            "primaryPayPalEmail": "",
+            "nameOnPrimaryCard": "1",
+            "primaryCardNumber": "2222222222222",
+            "primaryCardCSCOrCVD": "111",
+            "primaryCardExpirationDate": "2022-12-01T00:00:00Z",
+            "secondaryPaymentTypeId": "Undefine",
+            "secondaryPayPalBillingAgreementId": "",
+            "secondaryPayPalEmail": "",
+            "nameOnSecondaryCard": "",
+            "secondaryCardNumber": "",
+            "secondaryCardCSCOrCVD": "",
+            "secondaryCardExpirationDate": "1975-01-01T00:00:00Z",
+            "nonEPaymentTypeId": "Undefine"
+          }
+        expect:
+          responsestate: 200
+          responsejsonschemal:
+          responseitemcheck: {
+            "siteId":$siteId$,
+            "firstName": "firstNameUpdate",
+            "lastName": "lastNameUpdate",
+            "companyName": "companyTestUpdate",
+            "email": "testupdate@1.com",
+            "phone": "",
+            "fax": "",
+            "countryOrRegion": "China",
+            "stateOrProvince": "",
+            "city": "",
+            "mailingAddress": "addressTest",
+            "postalOrZipCode": "",
+            "jobTitle": "",
+            "billTo": "testupdate@1.com",
+            "isChargedAutomatically": false,
+            "isEPayment": true,
+            "primaryPaymentTypeId": "Amex",
+            "primaryPayPalBillingAgreementId": "",
+            "primaryPayPalEmail": "",
+            "nameOnPrimaryCard": "1",
+            "primaryCardNumber": "2222222222222",
+            "primaryCardCSCOrCVD": "111",
+            "primaryCardExpirationDate": "2022-12-01T00:00:00Z",
+            "secondaryPaymentTypeId": "Undefine",
+            "secondaryPayPalBillingAgreementId": "",
+            "secondaryPayPalEmail": "",
+            "nameOnSecondaryCard": "",
+            "secondaryCardNumber": "",
+            "secondaryCardCSCOrCVD": "",
+            "secondaryCardExpirationDate": "1975-01-01T00:00:00Z"
+          }
+          dbcheck: None
+          customcheck: {}
+          aftercaseaction: PUT
+          aftercasepath: /api/billing/sitebillingprofiles/$siteId$?partnerId=10000
+          aftercasebody: {
+            "firstName": "firstNameTest",
+            "lastName": "lastNameTest",
+            "companyName": "companyTest",
+            "email": "test@1.com",
+            "phone": "",
+            "fax": "",
+            "countryOrRegion": "Canada",
+            "stateOrProvince": "Alberta",
+            "city": "",
+            "mailingAddress": "address",
+            "postalOrZipCode": "",
+            "jobTitle": "",
+            "billTo": "test@1.com",
+            "isChargedAutomatically": true,
+            "isEPayment": true,
+            "primaryPaymentTypeId": "Amex",
+            "primaryPayPalBillingAgreementId": "",
+            "primaryPayPalEmail": "",
+            "nameOnPrimaryCard": "1",
+            "primaryCardNumber": "2222222222222",
+            "primaryCardCSCOrCVD": "111",
+            "primaryCardExpirationDate": "2022-12-01T00:00:00Z",
+            "secondaryPaymentTypeId": "Undefine",
+            "secondaryPayPalBillingAgreementId": "",
+            "secondaryPayPalEmail": "",
+            "nameOnSecondaryCard": "",
+            "secondaryCardNumber": "",
+            "secondaryCardCSCOrCVD": "",
+            "secondaryCardExpirationDate": "1975-01-01T00:00:00Z",
+            "nonEPaymentTypeId": "Undefine"
+          }
+      - case: Update Site BillingProfile Failed. Because the siteId is not Exist
+        http:
+          method: PUT
+          path: /api/billing/sitebillingprofiles/123456?partnerId=10000
+          body: {
+            "firstName": "firstNameUpdate",
+            "lastName": "lastNameUpdate",
+            "companyName": "companyTestUpdate",
+            "email": "testupdate@1.com",
+            "phone": "",
+            "fax": "",
+            "countryOrRegion": "China",
+            "stateOrProvince": "",
+            "city": "",
+            "mailingAddress": "addressTest",
+            "postalOrZipCode": "",
+            "jobTitle": "",
+            "billTo": "testupdate@1.com",
+            "isChargedAutomatically": false,
+            "isEPayment": true,
+            "primaryPaymentTypeId": "Amex",
+            "primaryPayPalBillingAgreementId": "",
+            "primaryPayPalEmail": "",
+            "nameOnPrimaryCard": "1",
+            "primaryCardNumber": "2222222222222",
+            "primaryCardCSCOrCVD": "111",
+            "primaryCardExpirationDate": "2022-12-01T00:00:00Z",
+            "secondaryPaymentTypeId": "Undefine",
+            "secondaryPayPalBillingAgreementId": "",
+            "secondaryPayPalEmail": "",
+            "nameOnSecondaryCard": "",
+            "secondaryCardNumber": "",
+            "secondaryCardCSCOrCVD": "",
+            "secondaryCardExpirationDate": "1975-01-01T00:00:00Z",
+            "nonEPaymentTypeId": "Undefine"
+          }
+        expect:
+          responsestate: 404
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}
+  - illegalInputTest:
+      - case: Update Site BillingProfile Failed. Because the Required Field Miss
+        http:
+          method: PUT
+          path: /api/billing/sitebillingprofiles/$siteId$?partnerId=10000
+          body: {
+            "firstName": "firstNameUpdate",
+            "lastName": "lastNameUpdate",
+            "companyName": "companyTestUpdate",
+            "email": "testupdate@1.com",
+            "phone": "",
+            "fax": "",
+            "countryOrRegion": "China",
+            "stateOrProvince": "",
+            "city": "",
+            "mailingAddress": "addressTest",
+            "postalOrZipCode": "",
+            "jobTitle": "",
+            "billTo": "testupdate@1.com",
+            "isChargedAutomatically": false,
+            "isEPayment": true,
+            "primaryPaymentTypeId": "Amex",
+            "primaryPayPalBillingAgreementId": "",
+            "primaryPayPalEmail": "",
+            "nameOnPrimaryCard": "1",
+            "primaryCardNumber": "2222222222222",
+            "primaryCardCSCOrCVD": "111",
+            "primaryCardExpirationDate": "2022-12-01T00:00:00Z",
+            "secondaryPaymentTypeId": "Undefine",
+            "secondaryPayPalBillingAgreementId": "",
+            "secondaryPayPalEmail": "",
+            "nameOnSecondaryCard": "",
+            "secondaryCardNumber": "",
+            "secondaryCardCSCOrCVD": "",
+            "secondaryCardExpirationDate": "1975-01-01T00:00:00Z",
+            "nonEPaymentTypeId": "Undefine"
+          }
+        expect:
+          responsestate: 400
+          requirefield: ['firstName','lastName', 'email', 'billTo']
+          error:
+          errormessage:
+          customcheck:

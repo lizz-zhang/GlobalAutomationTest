@@ -1,0 +1,14 @@
+---
+alltest:
+  - businessTests:
+      - case: Get AllSite Contracts
+        http:
+          method: GET
+          path: /api/billing/sitecontracts
+          body: {}
+        expect:
+          responsestate: 200
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}

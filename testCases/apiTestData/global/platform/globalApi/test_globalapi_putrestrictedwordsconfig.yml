@@ -1,0 +1,48 @@
+---
+alltest:
+- businessTests:
+  - case: Update the Restricted Words Config successfully
+    http:
+      method: PUT
+      path: /api/global/restrictedWordsConfig?siteid=$siteId$
+      body: {
+        "isEnabled": "true",
+        "restrictedWords": "test"
+    }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+         "restrictedWords":'test'
+      }
+      customcheck: {}
+  - case: Update the restrictedWordsConfig failed with restrictedWords Length Exceed
+    http:
+      method: PUT
+      path: /api/global/restrictedWordsConfig?siteid=$siteId$
+      body: {
+        "isEnabled": "true",
+        "restrictedWords": "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest\nlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisstnlisst\nss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2snss2s"
+    }
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {
+         "error":'ParameterStringLengthExceed',
+      }
+      customcheck: {}
+  - case: Update the restrictedWordsConfig failed with restrictedWords Invalid
+    http:
+      method: PUT
+      path: /api/global/restrictedWordsConfig?siteid=$siteId$
+      body: {
+        "isEnabled": "true",
+        "restrictedWords": 2
+    }
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {
+         "error":'ParameterInvalid',
+      }
+      customcheck: {}

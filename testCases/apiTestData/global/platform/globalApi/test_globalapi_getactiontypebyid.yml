@@ -1,0 +1,37 @@
+---
+alltest:
+- businessTests:
+  - case: Get a single actiontype successfully
+    http:
+      method: GET
+      path: /api/global/ActionTypes/32002?siteId=$siteId$
+      head: {
+              "Content-Type":'application/json',
+              "User-Agent":'Apache-HttpClient/4.5.12 (Java/1.8.0_40)',
+              "content-encoding":'gzip'
+      }
+      body:
+      expect:
+        responsestate: 200
+        responsejsonschemal:
+        responseitemcheck: {
+          "errorCode":0,
+        }
+      customcheck: {}
+  - case: Get a actiontype Failed by not existed id
+    http:
+      method: GET
+      path: /api/global/ActionTypes/1?siteId=$siteId$
+      head: {
+        "Content-Type": 'application/json',
+        "User-Agent": 'Apache-HttpClient/4.5.12 (Java/1.8.0_40)',
+        "content-encoding": 'gzip'
+      }
+      body:
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {
+         "error":'EntityNotFound',
+      }
+      customcheck: {}

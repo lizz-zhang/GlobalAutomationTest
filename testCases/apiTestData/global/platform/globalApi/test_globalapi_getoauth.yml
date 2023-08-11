@@ -1,0 +1,16 @@
+---
+alltest:
+- businessTests:
+  - case: get oauth from platform
+    http:
+      method: GET
+      path: /api/global/oAuthClients?pageIndex=1&pageSize=50&siteid=$siteId$&sortBy=name&sortOrder=asc
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+         "oAuthClients.[*].name":'Initial name'
+      }
+      customcheck: {}
+

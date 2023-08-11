@@ -1,0 +1,14 @@
+---
+alltest:
+  - businessTests:
+      - case: Get AllSite BillingConfigs
+        http:
+          method: GET
+          path: /api/billing/siteBillingConfigs?pageSize=1000&sortBy=balance
+          body: {}
+        expect:
+          responsestate: 200
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}

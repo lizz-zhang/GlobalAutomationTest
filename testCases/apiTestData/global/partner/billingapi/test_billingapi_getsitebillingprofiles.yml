@@ -1,0 +1,38 @@
+---
+alltest:
+  - businessTests:
+      - case: Get Site BillingProfile Successfully
+        http:
+          method: GET
+          path: /api/billing/sitebillingprofiles/$siteId$?partnerId=10000
+          body: {}
+        expect:
+          responsestate: 200
+          responsejsonschemal:
+          responseitemcheck: {
+            "siteId":$siteId$
+          }
+          dbcheck: None
+          customcheck: {}
+      - case: Get Site BillingProfile Failed. Because the siteId is not exist
+        http:
+          method: GET
+          path: /api/billing/sitebillingprofiles/123456?partnerId=10000
+          body: {}
+        expect:
+          responsestate: 404
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}
+      - case: Get Site BillingProfile Failed. Because the Site Billing Profile does not Exist
+        http:
+          method: GET
+          path: /api/billing/sitebillingprofiles/$siteId$?partnerId=10000
+          body: {}
+        expect:
+          responsestate: 404
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}

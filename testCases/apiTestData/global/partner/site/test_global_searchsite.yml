@@ -1,0 +1,16 @@
+---
+alltest:
+- businessTests:
+  - case: get agents
+    http:
+      method: GET
+      path: /api/billing/site/search
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+
+      }
+      customcheck: {}
+

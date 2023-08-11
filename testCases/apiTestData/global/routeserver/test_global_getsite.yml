@@ -1,0 +1,14 @@
+---
+alltest:
+- businessTests:
+  - case: get site
+    http:
+      method: GET
+      path: /api/v1/router/sites/$siteId$
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+

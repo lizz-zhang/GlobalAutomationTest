@@ -1,0 +1,39 @@
+---
+alltest:
+- businessTests:
+  - case: put a department by id
+    http:
+      method: PUT
+      path: /api/global/departments/$id$?siteid=$siteId$
+      body: {
+        "name": "$random$",
+        "description": "update department",
+        "isAvailableInLiveChat": true,
+        "isAvailableInTicketingAndMessaging": true,
+        "agentIds": [ ]
+      }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+         "description": "update department",
+      }
+      customcheck: {}
+
+  - case: put a department by no exist id
+    http:
+      method: PUT
+      path: /api/global/departments/00000000-1111-2222-3333-000011112222?siteid=$siteId$
+      body: {
+        "name": "$random$",
+        "description": "update department",
+        "isAvailableInLiveChat": true,
+        "isAvailableInTicketingAndMessaging": true,
+        "agentIds": [ ]
+      }
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}

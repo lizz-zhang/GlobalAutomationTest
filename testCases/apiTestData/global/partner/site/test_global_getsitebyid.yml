@@ -1,0 +1,26 @@
+---
+alltest:
+- businessTests:
+  - case: get a site by id
+    http:
+      method: GET
+      path: /api/billing/sites/$siteId$
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+        "id": "$siteId$"
+      }
+      customcheck: {}
+  - case: get a site by worng id
+    http:
+      method: GET
+      path: /api/billing/sites/0
+      body: {}
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}

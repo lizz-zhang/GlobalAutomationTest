@@ -1,0 +1,28 @@
+---
+alltest:
+- businessTests:
+  - case: export  contacts
+    http:
+      method: POST
+      path: /api/contact/contacts:export?siteid=$siteId$
+      body: {
+      "ids":['$id$']
+      }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck:
+      customcheck: {}
+
+  - case: export  contacts by no exists id
+    http:
+      method: POST
+      path: /api/contact/contacts:export?siteid=$siteId$
+      body: {
+      "ids":['00000000-1111-2222-3333-000011112222']
+      }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck:
+      customcheck:

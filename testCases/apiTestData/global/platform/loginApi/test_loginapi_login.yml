@@ -1,0 +1,23 @@
+---
+alltest:
+- businessTests:
+  - case: login an agent
+    http:
+      method: POST
+      path: /api/global/jwtToken/Login?siteid=$siteId$
+      head: {
+              "Content-Type":'application/json',
+              "User-Agent":'comm100-android',
+              "content-encoding":'gzip'
+      }
+      body: {
+        "email": "lizztest2@fa.com",
+        "password": "2wsx_1qaz",
+        "siteid": $siteId$
+      }
+      expect:
+        responsestate: 200
+        responsejsonschemal:
+        responseitemcheck: {
+          "errorCode":0,
+        }

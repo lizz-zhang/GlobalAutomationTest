@@ -1,0 +1,30 @@
+---
+alltest:
+- businessTests:
+  - case: Success batch Delete contact with ids
+    http:
+      method: DELETE
+      path: /api/contact/contacts?siteid=$siteId$
+      body: [
+        "$id1$",
+        "$id2$"
+      ]
+    expect:
+      responsestate: 204
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+
+  - case: Success Delete contact with one id not existed
+    http:
+      method: DELETE
+      path: /api/contact/contacts?siteid=$siteId$
+      body: [
+          "$id1$",
+          "00000000-3333-2222-1111-000000000000"
+      ]
+    expect:
+      responsestate: 204
+      responsejsonschemal:
+      responseitemcheck: { }
+      customcheck: { }

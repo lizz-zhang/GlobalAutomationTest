@@ -1,0 +1,32 @@
+---
+alltest:
+- businessTests:
+  - case: change status of child partner
+    http:
+      method: POST
+      path: /api/Global/childPartners/$id$:changeStatus
+      body: {
+            "status":"open",
+            "reason":"changeStatus yeah waku waku"
+    }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}
+
+  - case: change status of child partner by no exist id
+    http:
+      method: POST
+      path: /api/Global/childPartners/199999:changeStatus
+      body: {
+        "status": "open",
+        "reason": "changeStatus yeah waku waku"
+      }
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}

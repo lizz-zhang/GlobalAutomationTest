@@ -1,0 +1,21 @@
+---
+alltest:
+- businessTests:
+  - case: put skill
+    http:
+      method: PUT
+      path: /api/global/skills/$id$?siteid=$siteId$
+      body: {
+        "name": "$random$",
+        "description": "put skill",
+        "agentIds": [ ]
+      }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+       "description":"put skill"
+      }
+      customcheck: {}
+
+

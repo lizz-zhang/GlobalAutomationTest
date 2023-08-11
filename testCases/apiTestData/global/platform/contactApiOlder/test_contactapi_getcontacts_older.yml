@@ -1,0 +1,16 @@
+---
+alltest:
+- businessTests:
+  - case: get contacts
+    http:
+      method: GET
+      path: /global/contacts?siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+         "contacts.[*].firstName":'firstName1'
+      }
+      customcheck: {}
+

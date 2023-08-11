@@ -1,0 +1,15 @@
+---
+alltest:
+- businessTests:
+  - case: get plans
+    http:
+      method: GET
+      path: /api/Global/plans?pageIndex=1&pageSize=50&sortBy=name
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}
+

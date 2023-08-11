@@ -1,0 +1,22 @@
+---
+alltest:
+- businessTests:
+  - case: post partner oauth
+    http:
+      method: POST
+      path: /api/Global/oAuthClients?$partnerId$
+      body: {
+        "name": "Initial name",
+        "redirectUris": "https://www.baidu.com",
+        "grantTypes": "password,authorization_code",
+        "secret": "oauth_secret",
+    }
+    expect:
+      responsestate: 201
+      responsejsonschemal:
+      responseitemcheck: {
+         "name":'Initial name',
+      }
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/Global/oAuthClients/$id$

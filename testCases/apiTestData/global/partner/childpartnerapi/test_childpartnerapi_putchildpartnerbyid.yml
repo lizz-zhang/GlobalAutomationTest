@@ -1,0 +1,59 @@
+---
+alltest:
+- businessTests:
+  - case: put a child partner user by id
+    http:
+      method: PUT
+      path: /api/Global/childPartners/$id$
+      body: {
+          "canCustomizeBrand": false,
+          "siteInvoiceBillTo": "Partner",
+          "companyName": "update companyName",
+          "description": "update description",
+          "website": "http://update.update",
+          "contactName": "update contactName",
+          "contactEmail": "1@1.update",
+          "contactPhone": "update contactPhone",
+          "contactTitle": "update",
+          "countryOrRegion": "France",
+          "status": "open",
+          "languageIds": [
+              "en",
+              "zh-CN"
+          ],
+    }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+        "companyName": "update companyName"
+      }
+      customcheck: {}
+
+  - case: put a partner user by no exist id
+    http:
+      method: PUT
+      path: /api/Global/childPartners/9999
+      body: {
+        "canCustomizeBrand": false,
+        "siteInvoiceBillTo": "Partner",
+        "companyName": "update companyName",
+        "description": "update description",
+        "website": "http://update.update",
+        "contactName": "update contactName",
+        "contactEmail": "1@1.update",
+        "contactPhone": "update contactPhone",
+        "contactTitle": "update",
+        "countryOrRegion": "France",
+        "status": "open",
+        "languageIds": [
+            "en",
+            "zh-CN"
+        ],
+      }
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}

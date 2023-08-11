@@ -1,0 +1,14 @@
+---
+alltest:
+- businessTests:
+  - case: get department list
+    http:
+      method: GET
+      path: /api/global/departments?siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+

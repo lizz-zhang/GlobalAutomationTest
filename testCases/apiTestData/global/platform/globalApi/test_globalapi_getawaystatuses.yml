@@ -1,0 +1,17 @@
+---
+alltest:
+- businessTests:
+  - case: get away statuses
+    http:
+      method: GET
+      path: /api/global/agentawaystatuses?pagesize=50&siteid=$siteId$
+      body: {
+      }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+         "agentAwayStatuses.[*].name":"test_status"
+      }
+      customcheck: {}
+

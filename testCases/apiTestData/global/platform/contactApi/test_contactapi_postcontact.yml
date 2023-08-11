@@ -1,0 +1,85 @@
+---
+alltest:
+- businessTests:
+  - case: Success Create contact with all default parameter
+    http:
+      method: POST
+      path: /api/contact/contacts?siteid=$siteId$
+      body: {
+        "name":"$random$",
+        "firstName":"firstName1",
+        "lastName":"lastName1",
+        "contactIdentities":[
+          {"contactIdentityType":"Email","value":"1@1.contact$random$","name":"","screenName":"","isDeleted":false},
+          {"contactIdentityType":"SMS","value":"+$randomInt$","SMS":"","screenName":"","isDeleted":false},
+          {"contactIdentityType":"Facebook","value":"FacebookPost$random$","name":"","screenName":"","isDeleted":false},
+          {"contactIdentityType":"Twitter","value":"TwitterPost$random$","name":"","screenName":"","isDeleted":false},
+          {"contactIdentityType":"WhatsApp","value":"WhatsAppPost$random$","name":"","screenName":"","isDeleted":false},
+          {"contactIdentityType":"Instagram","value":"InstagramPost$random$","name":"","screenName":"","isDeleted":false},
+          {"contactIdentityType":"Telegram","value":"TelegramPost$random$","name":"","screenName":"","isDeleted":false},
+          {"contactIdentityType":"Wechat","value":"WechatPost$random$","name":"","screenName":"","isDeleted":false},
+          {"contactIdentityType":"Line","value":"LinePost$random$","name":"","screenName":"","isDeleted":false},
+          {"contactIdentityType":"SSOID","value":"SSOIDPost$random$","name":"","screenName":"","isDeleted":false},
+          {"contactIdentityType":"ExternalID","value":"ExternalIDPost$random$","name":"","screenName":"","isDeleted":false},
+          {"contactIdentityType":"Visitor","value":"$random$a-1eef-4b8d-a9bc-ce2931657a7d","Visitor":"","screenName":"","isDeleted":false},
+          {"contactIdentityType":"SecureMessaging","value":"SecureMessagingPost$random$","name":"","screenName":"","isDeleted":false}
+          ],
+        "customFields":
+        {
+            "description":"descriptionPost",
+            "phone":"phonePost",
+            "fax":"faxPost",
+            "alias":"aliasPost",
+            "title":"titlePost",
+            "company":"companyPost",
+            "city":"cityPost",
+            "stateOrProvince":"stateOrProvincePost",
+            "countryOrRegion":"countryOrRegionPost",
+            "postalOrZipCode":"postalOrZipCodePost",
+            "timeZone":"Hawaiian Standard Time"
+        }
+    }
+    expect:
+      responsestate: 201
+      responsejsonschemal:
+      responseitemcheck: {
+         "firstName":'firstName1',
+      }
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/contacts/$id$
+
+  - case: Failed Create contact with name existd
+    http:
+      method: POST
+      path: /api/contact/contacts?siteid=$siteId$
+      body: {
+        "name": "namecopy",
+        "firstName": "firstName1",
+        "lastName": "lastName1",
+        "contactIdentities": [
+        ]
+      }
+    expect:
+      responsestate: 400
+      customcheck: { }
+      aftercaseaction: DELETE
+      aftercasepath: /api/contact/$id$
+
+- illegalInputTest:
+  - case: Failed Create contact without required parameters
+    http:
+      method: POST
+      path: /api/contact/contacts?siteid=$siteId$
+      body: {
+        "name":"$random$",
+        "firstName":"firstName1",
+        "lastName":"lastName1",
+        "contactIdentities":[]
+    }
+    expect:
+      responsestate: 400
+      requirefield: ['name','contactIdentities']
+      error:
+      errormessage: the parameter "%s" is required.
+      customcheck: {}

@@ -1,0 +1,14 @@
+---
+alltest:
+  - businessTests:
+      - case: Get AllSite BillingProfile Successfully
+        http:
+          method: GET
+          path: /api/billing/sitebillingprofiles
+          body: {}
+        expect:
+          responsestate: 200
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}

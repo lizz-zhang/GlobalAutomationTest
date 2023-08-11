@@ -1,0 +1,39 @@
+---
+alltest:
+- businessTests:
+  - case: Success get an ContactIdentities by id
+    http:
+      method: GET
+      path: /api/contact/ContactIdentities/$id$?siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+
+  - case: Failed get a ContactIdentities by not existed id
+    http:
+      method: GET
+      path: /api/contact/ContactIdentities/00000000-1111-2222-3333-000011112222?siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}
+
+  - case: Failed get a identity with invalid id
+    http:
+      method: GET
+      path: /api/contact/ContactIdentities/aaa?siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: { }
+
+

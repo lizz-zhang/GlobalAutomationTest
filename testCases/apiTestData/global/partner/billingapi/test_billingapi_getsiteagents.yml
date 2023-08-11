@@ -1,0 +1,14 @@
+---
+alltest:
+  - businessTests:
+      - case: Get Site Agents Successful
+        http:
+          method: GET
+          path: /api/billing/siteAgents?include=siteAgentActivity&pageIndex=1&pageSize=10&partnerId=10000&siteId=$siteId$&sortBy=displayName&sortOrder=asc
+          body: {}
+        expect:
+          responsestate: 200
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}

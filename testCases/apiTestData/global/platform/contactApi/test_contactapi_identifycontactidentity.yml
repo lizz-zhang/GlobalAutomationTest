@@ -1,0 +1,50 @@
+---
+alltest:
+- businessTests:
+  - case: identify contact identity,matched
+    http:
+      method: GET
+      path: /api/contact/ContactIdentities:identify?value=$value$&identityType=Email&siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+        "total":1
+      }
+      customcheck: {}
+
+  - case: identify contact identity with unsupport type
+    http:
+      method: GET
+      path: /api/contact/ContactIdentities:identify?value=$value$&identityType=TestType&siteid=$siteId$
+      body:
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck:
+      customcheck:
+
+  - case: identify contact identity,value is null
+    http:
+      method: GET
+      path: /api/contact/ContactIdentities:identify?value=&identityType=Email&siteid=$siteId$
+      body:
+    expect:
+      responsestate: 400
+      responsejsonschemal:
+      responseitemcheck:
+      customcheck:
+
+  - case: identify contact identity,unmatched
+    http:
+      method: GET
+      path: /api/contact/ContactIdentities:identify?value=test@000test.com&identityType=Email&siteid=$siteId$
+      body:
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+        "total":0
+      }
+      customcheck:

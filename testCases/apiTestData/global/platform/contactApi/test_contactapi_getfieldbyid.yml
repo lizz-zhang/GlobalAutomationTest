@@ -1,0 +1,26 @@
+---
+alltest:
+- businessTests:
+  - case: get contact field
+    http:
+      method: GET
+      path: /api/contact/fields/$id$?siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+        "name":"test text"
+      }
+      customcheck: {}
+
+  - case: get contact field by no exists id
+    http:
+      method: GET
+      path: /api/contact/fields/00000000-1111-2222-3333-000011112222?siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck:
+      customcheck: {}

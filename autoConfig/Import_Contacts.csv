@@ -1,0 +1,2 @@
+﻿Name,FirstName,LastName,Description,Alias,Title,Company,MailingAddress,Fax,Phone,City,StateOrProvince,CountryOrRegion,PostalOrZipCode,TimeZone,Email,SMS,Facebook,Twitter,WhatsApp,Instagram,Telegram,Wechat,Line,SSO ID,External ID,Visitor ID,SecureMessaging
+import_test,,,,,,,,,,,,,,GMT Standard Time,import@test.com,,,,,,,,,,,,

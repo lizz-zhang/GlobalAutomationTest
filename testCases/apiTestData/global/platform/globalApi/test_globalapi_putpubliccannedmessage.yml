@@ -1,0 +1,51 @@
+---
+alltest:
+  - businessTests:
+      - case: Put Public Canned Message Successfully
+        http:
+          method: PUT
+          path: /api/global/publicCannedMessages/$id$
+          body: {
+            "name": "canned message update",
+            "message": "update message"
+          }
+        expect:
+          responsestate: 200
+          responsejsonschemal:
+          responseitemcheck: {
+            "name": "canned message update"
+          }
+          dbcheck: None
+          customcheck: {}
+          aftercaseaction: PUT
+          aftercasepath: /api/global/publicCannedMessages/$id$
+          aftercasebody: {
+            "name": "canned message test",
+            "message": "test"
+          }
+      - case: Put Public Canned Message Failed. Because the id is not Exist
+        http:
+          method: PUT
+          path: /api/global/publicCannedMessages/41a97d95-f2b1-4971-9303-14dd9e079f42
+          body: {
+            "name": "canned message update"
+          }
+        expect:
+          responsestate: 404
+          responsejsonschemal:
+          responseitemcheck:
+          dbcheck: None
+          customcheck: {}
+      - case: Put Public Canned Message Failed. Because the categoryId is not Exist
+        http:
+          method: PUT
+          path: /api/global/publicCannedMessages/$id$
+          body: {
+            "categoryId": '41a97d95-f2b1-4971-9303-14dd9e079f42'
+          }
+        expect:
+          responsestate: 400
+          responsejsonschemal:
+          responseitemcheck:
+          dbcheck: None
+          customcheck: {}

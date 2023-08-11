@@ -1,0 +1,86 @@
+---
+alltest:
+- businessTests:
+  - case: Success Update contact with all default parameter
+    http:
+      method: PUT
+      path: /api/contact/contacts/$id$?siteid=$siteId$
+      body: {
+        "name":"$random$",
+        "firstName":"firstName_update",
+        "lastName":"lastName1_update",
+        "contactIdentities":[
+          {"contactIdentityType":"Email","value":"EmailUpdate@1.q","name":"","screenName":"","isDeleted":false},
+          {"contactIdentityType":"SMS","value":"+222","SMSUpdate":"","screenName":"","isDeleted":false},
+          {"contactIdentityType":"Facebook","value":"FacebookUpdate","name":"","screenName":"","isDeleted":false},
+          {"contactIdentityType":"Twitter","value":"TwitterUpdate","name":"","screenName":"","isDeleted":false},
+          {"contactIdentityType":"WhatsApp","value":"WhatsAppUpdate","name":"","screenName":"","isDeleted":false},
+          {"contactIdentityType":"Instagram","value":"InstagramUpdate","name":"","screenName":"","isDeleted":false},
+          {"contactIdentityType":"Telegram","value":"TelegramUpdate","name":"","screenName":"","isDeleted":false},
+          {"contactIdentityType":"Wechat","value":"WechatUpdate","name":"","screenName":"","isDeleted":false},
+          {"contactIdentityType":"Line","value":"LineUpdate","name":"","screenName":"","isDeleted":false},
+          {"contactIdentityType":"SSOID","value":"SSOIDUpdate","name":"","screenName":"","isDeleted":false},
+          {"contactIdentityType":"ExternalID","value":"ExternalIDUpdate","name":"","screenName":"","isDeleted":false},
+          {"contactIdentityType":"Visitor","value":"$random$a-1eef-4b8d-a9bc-ce2931657a7d","VisitorUpdate":"","screenName":"","isDeleted":false},
+          {"contactIdentityType":"SecureMessaging","value":"SecureMessagingUpdate","name":"","screenName":"","isDeleted":false}
+          ],
+        "customFields":
+        {
+            "description":"descriptionUpdate",
+            "phone":"phoneUpdate",
+            "fax":"faxUpdate",
+            "alias":"aliasUpdate",
+            "title":"titleUpdate",
+            "company":"companyUpdate",
+            "city":"cityUpdate",
+            "stateOrProvince":"stateOrProvinceUpdate",
+            "countryOrRegion":"countryOrRegionUpdate",
+            "postalOrZipCode":"postalOrZipCodeUpdate",
+            "timeZone":"Hawaiian Standard Time"
+        }
+    }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+         "firstName":"firstName_update",
+      }
+      customcheck: {}
+
+  - case: Failed Update contact with id not existed
+    http:
+      method: PUT
+      path: /api/contact/contacts/00000000-1111-2222-3333-000011112222?siteid=$siteId$
+      body: {
+        "name":"$random$",
+        "firstName":"firstName_update",
+        "lastName":"lastName1_update",
+        "contactIdentities":[
+          {"contactIdentityType":"Email","value":"EmailUpdate@1.q","name":"","screenName":"","isDeleted":false},
+          ]
+    }
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+
+- illegalInputTest:
+  - case: Failed Update contact without required parameters
+    http:
+      method: PUT
+      path: /api/contact/contacts/$id$?siteid=$siteId$
+      body: {
+        "name":"$random$",
+        "firstName":"firstName1",
+        "lastName":"lastName1",
+        "contactIdentities":[
+          {"contactIdentityType":"Email","value":"EmailUpdate@1.q","name":"","screenName":"","isDeleted":false},
+        ]
+    }
+    expect:
+      responsestate: 400
+      requirefield: ['name','contactIdentities']
+      error:
+      errormessage: the parameter "%s" is required.
+      customcheck: {}

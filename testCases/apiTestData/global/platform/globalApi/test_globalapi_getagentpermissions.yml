@@ -1,0 +1,25 @@
+---
+alltest:
+  - businessTests:
+      - case: Get Agent Permissions Successfully
+        http:
+          method: GET
+          path: /api/global/agents/$agentId$/permissions
+          body: {}
+        expect:
+          responsestate: 200
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}
+      - case: Get Agent Permissions Failed. Because the agentId is not exist
+        http:
+          method: GET
+          path: /api/global/agents/23dacc9b-e994-4d43-a2a4-a6fdd7c065cb/permissions
+          body: {}
+        expect:
+          responsestate: 404
+          responsejsonschemal:
+          responseitemcheck: {}
+          dbcheck: None
+          customcheck: {}

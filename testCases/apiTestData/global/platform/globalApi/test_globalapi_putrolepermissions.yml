@@ -1,0 +1,61 @@
+---
+alltest:
+  - businessTests:
+      - case: Update Role Permissions Successfully
+        http:
+          method: PUT
+          path: /api/global/roles/$roleId$/permissions
+          body: {
+            "permissionIds": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        expect:
+          responsestate: 200
+          responsejsonschemal:
+          responseitemcheck: {
+            "permissionIds": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+          dbcheck: None
+          customcheck: {}
+      - case: Update Role Permissions Failed. Because roleId is not exist
+        http:
+          method: PUT
+          path: /api/global/roles/23dacc9b-e994-4d43-a2a4-a6fdd7c065cb/permissions
+          body: {
+            "permissionIds": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        expect:
+          responsestate: 404
+          responsejsonschemal:
+          responseitemcheck: 
+          dbcheck: None
+          customcheck: {}
+  - illegalInputTest:
+      - case: Update Role Permissions Failed. Because the Required Field Miss
+        http:
+          method: PUT
+          path: /api/global/roles/$roleId$/permissions
+          body: {}
+        expect:
+          responsestate: 400
+          requirefield: ['permissionIds']
+          error:
+          errormessage:
+          customcheck:

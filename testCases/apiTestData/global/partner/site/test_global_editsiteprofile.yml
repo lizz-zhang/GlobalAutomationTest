@@ -1,0 +1,181 @@
+---
+alltest:
+- businessTests:
+  - case: update site profile
+    http:
+      method: PUT
+      path: /api/billing/site/editProfile/$siteId$?partnerId=$partnerId$
+      body: {
+        "id":"$siteId$",
+        "partnerId":"$partnerId$",
+        "company":"test1",
+        "companySize":"",
+        "website":"http://www.1.com",
+        "phone":"001",
+        "fax":"",
+        "countryOrRegion":"Argentina",
+        "stateOrProvince":"",
+        "city":"",
+        "mailingAddress":"",
+        "postalOrZipCode":"",
+        "firstName":"10",
+        "lastName":"1",
+        "dateTimeFormat":"MM/DD/YYYY HH:mm:ss",
+        "languageId":"en",
+        "timeZone":"UTC-08",
+        "status":"open",
+        "subdomain":"",
+        "customDomain":"",
+        "industry":"Others",
+        "otherIndustryDescription":"",
+        "tagIds":[],
+        "siteExtraInfo":{
+            "siteId":"$siteId$",
+            "profitCenterId":"01000000-0000-0000-0000-271000002710",
+            "deploymentType":"Shared",
+            "accountExecutive":"00000000-0000-0000-0000-000000000000",
+            "accountManager":"00000000-0000-0000-0000-000000000000",
+            "isSandboxSite":false,
+            "isSpam":false,
+            "isDeleted":false,
+            "profitCenterName":"SMB & APAC ENT",
+            "accountExecutiveName":"No Account Executive",
+            "accountManagerName":"No Account Manager"
+        },
+        "hasBillingProfile":false,
+        "activeAgents":1,
+        "contractStartDate":"- -",
+        "contractEndDate":"- -",
+        "totalInvoiced":0,
+        "totalReceived":0,
+        "amountDue":0,
+        "freeAgents":5,
+        "isEnableLicense":false,
+        "registerEmail":"$email$"
+      }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck:
+      customcheck:
+
+  - case: update site profile by wrong id
+    http:
+      method: PUT
+      path: /api/billing/site/editProfile/$siteId$?partnerId=$partnerId$
+      body: {
+        "id":"0",
+        "partnerId":"$partnerId$",
+        "company":"test1",
+        "companySize":"",
+        "website":"http://www.1.com",
+        "phone":"001",
+        "fax":"",
+        "countryOrRegion":"Argentina",
+        "stateOrProvince":"",
+        "city":"",
+        "mailingAddress":"",
+        "postalOrZipCode":"",
+        "firstName":"10",
+        "lastName":"1",
+        "dateTimeFormat":"MM/DD/YYYY HH:mm:ss",
+        "languageId":"en",
+        "timeZone":"UTC-08",
+        "status":"open",
+        "subdomain":"",
+        "customDomain":"",
+        "industry":"Others",
+        "otherIndustryDescription":"",
+        "tagIds":[],
+        "siteExtraInfo":{
+            "siteId":"$siteId$",
+            "profitCenterId":"01000000-0000-0000-0000-271000002710",
+            "deploymentType":"Shared",
+            "accountExecutive":"00000000-0000-0000-0000-000000000000",
+            "accountManager":"00000000-0000-0000-0000-000000000000",
+            "isSandboxSite":false,
+            "isSpam":false,
+            "isDeleted":false,
+            "profitCenterName":"SMB & APAC ENT",
+            "accountExecutiveName":"No Account Executive",
+            "accountManagerName":"No Account Manager"
+        },
+        "hasBillingProfile":false,
+        "activeAgents":1,
+        "contractStartDate":"- -",
+        "contractEndDate":"- -",
+        "totalInvoiced":0,
+        "totalReceived":0,
+        "amountDue":0,
+        "freeAgents":5,
+        "isEnableLicense":false,
+        "registerEmail":"$email$"
+      }
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck:
+      customcheck:
+
+
+- illegalInputTest:
+  - case: update site profile
+    http:
+      method: PUT
+      path: /api/billing/site/editProfile/$siteId$?partnerId=$partnerId$
+      body: {
+          "id":$siteId$,
+          "partnerId":$partnerId$,
+          "company":"test1",
+          "companySize":"",
+          "website":"http://www.1.com",
+          "phone":"001",
+          "fax":"",
+          "countryOrRegion":"Argentina",
+          "stateOrProvince":"",
+          "city":"",
+          "mailingAddress":"",
+          "postalOrZipCode":"",
+          "firstName":"10",
+          "lastName":"1",
+          "dateTimeFormat":"MM/DD/YYYY HH:mm:ss",
+          "languageId":"en",
+          "timeZone":"UTC-08",
+          "status":"open",
+          "subdomain":"",
+          "customDomain":"",
+          "industry":"Others",
+          "otherIndustryDescription":"",
+          "tagIds":[
+
+          ],
+          "siteExtraInfo":{
+              "siteId":$siteId$,
+              "profitCenterId":"01000000-0000-0000-0000-271000002710",
+              "deploymentType":"Shared",
+              "accountExecutive":"00000000-0000-0000-0000-000000000000",
+              "accountManager":"00000000-0000-0000-0000-000000000000",
+              "isSandboxSite":false,
+              "isSpam":false,
+              "isDeleted":false,
+              "profitCenterName":"SMB & APAC ENT",
+              "accountExecutiveName":"No Account Executive",
+              "accountManagerName":"No Account Manager"
+          },
+          "hasBillingProfile":false,
+          "activeAgents":1,
+          "contractStartDate":"- -",
+          "contractEndDate":"- -",
+          "totalInvoiced":0,
+          "totalReceived":0,
+          "amountDue":0,
+          "freeAgents":5,
+          "isEnableLicense":false,
+          "registerEmail":"$email$"
+    }
+    expect:
+          responsestate: 400
+          requirefield: ['firstName','lastName', 'registerEmail', 'company', 'dateTimeFormat', 'timeZone', 'languageId']
+          error:
+          errormessage:
+          customcheck:

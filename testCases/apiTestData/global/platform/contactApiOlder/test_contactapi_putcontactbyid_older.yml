@@ -1,0 +1,71 @@
+---
+alltest:
+- businessTests:
+  - case: put a contact by id
+    http:
+      method: PUT
+      path: /global/contacts/$id$?siteid=$siteId$
+      body: {
+        "name":"$randomInt$",
+        "description": "initial contact description",
+        "firstName": "firstName1",
+        "lastName": "lastName1",
+        "alias": "alias1",
+        "title": "title1",
+        "company": "company1",
+        "fax": "fax1",
+        "phone": "phone1",
+        "mailingAddress": "mailingAddress1",
+        "city": "cityyyyyyyyy",
+        "stateOrProvince": "stateOrProvinceeeeeeeeee",
+        "countryOrRegion": "countryOrRegionnnnnnnnnnn",
+        "postalOrZipCode": "postalOrZipCodeeeeeeeee",
+        "mergeToContactId": "00000000-0000-0000-0000-000000000000",
+        "contactIdentities": [
+          {
+            "contactIdentityType": "visitor",
+            "name": "",
+            "value": "$randomInt$",
+            "avatarUrl": "",
+            "infoUrl": "",
+            "screenName": "",
+            "originalContactPageUrl": ""
+          }
+        ]
+    }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+         "firstName":'firstName1',
+      }
+      customcheck: {}
+
+  - case: put a contact by no exist id
+    http:
+      method: PUT
+      path: /global/contacts/00000000-1111-2222-3333-000011112222?siteid=$siteId$
+      body: {
+        "name":"$randomInt$",
+        "description": "initial contact description",
+        "firstName": "firstName1",
+        "lastName": "lastName1",
+        "alias": "alias1",
+        "title": "title1",
+        "company": "company1",
+        "fax": "fax1",
+        "phone": "phone1",
+        "mailingAddress": "mailingAddress1",
+        "city": "cityyyyyyyyy",
+        "stateOrProvince": "stateOrProvinceeeeeeeeee",
+        "countryOrRegion": "countryOrRegionnnnnnnnnnn",
+        "postalOrZipCode": "postalOrZipCodeeeeeeeee",
+        "mergeToContactId": "00000000-0000-0000-0000-000000000000",
+        "contactIdentities": []
+    }
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}

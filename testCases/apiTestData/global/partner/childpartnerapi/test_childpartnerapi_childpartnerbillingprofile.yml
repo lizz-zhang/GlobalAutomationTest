@@ -1,0 +1,26 @@
+---
+alltest:
+- businessTests:
+  - case: get child partner's billing profile
+    http:
+      method: GET
+      path: /api/Global/childPartners/$id$/partnerBillingProfile
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}
+
+  - case: get child partner's billing profile by no exist id
+    http:
+      method: GET
+      path: /api/Global/childPartners/199999/partnerBillingProfile
+      body: {}
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}

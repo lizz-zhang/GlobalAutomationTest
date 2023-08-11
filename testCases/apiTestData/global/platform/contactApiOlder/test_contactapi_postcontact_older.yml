@@ -1,0 +1,44 @@
+---
+alltest:
+- businessTests:
+  - case: post contact
+    http:
+      method: POST
+      path: /global/contacts?siteid=$siteId$
+      body: {
+        "name":"$randomInt$",
+        "description": "initial contact description",
+        "firstName": "firstName1",
+        "lastName": "lastName1",
+        "alias": "alias1",
+        "title": "title1",
+        "company": "company1",
+        "fax": "fax1",
+        "phone": "phone1",
+        "mailingAddress": "mailingAddress1",
+        "city": "cityyyyyyyyy",
+        "stateOrProvince": "stateOrProvinceeeeeeeeee",
+        "countryOrRegion": "countryOrRegionnnnnnnnnnn",
+        "postalOrZipCode": "postalOrZipCodeeeeeeeee",
+        "mergeToContactId": "00000000-0000-0000-0000-000000000000",
+        "contactIdentities": [
+          {
+            "contactIdentityType": "visitor",
+            "name": "",
+            "value": "$randomInt$",
+            "avatarUrl": "",
+            "infoUrl": "",
+            "screenName": "",
+            "originalContactPageUrl": ""
+          }
+        ]
+    }
+    expect:
+      responsestate: 201
+      responsejsonschemal:
+      responseitemcheck: {
+         "firstName":'firstName1'
+      }
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /global/contacts/$id$

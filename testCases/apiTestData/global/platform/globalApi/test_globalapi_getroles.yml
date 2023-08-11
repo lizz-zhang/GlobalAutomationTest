@@ -1,0 +1,16 @@
+---
+alltest:
+- businessTests:
+  - case: get roles
+    http:
+      method: GET
+      path: /api/global/roles?pageIndex=1&pageSize=50&siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+        "roles.[*].name":'Administrators'
+      }
+      customcheck: {}
+

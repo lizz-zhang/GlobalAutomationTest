@@ -1,0 +1,16 @@
+---
+alltest:
+- businessTests:
+  - case: get oauth
+    http:
+      method: GET
+      path: /api/Global/oAuthClients?pageIndex=1&pageSize=50&partnerId=$partnerId$
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+         "oAuthClients.[*].name":'Initial name'
+      }
+      customcheck: {}
+

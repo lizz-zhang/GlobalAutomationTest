@@ -1,0 +1,29 @@
+---
+alltest:
+- businessTests:
+  - case: Success get an contact by id
+    http:
+      method: GET
+      path: /api/contact/contacts/$id$?siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+         "firstName":'firstName'
+      }
+      customcheck: {}
+
+  - case: get a contacts by not existed id
+    http:
+      method: GET
+      path: /api/contact/contacts/00000000-1111-2222-3333-000011112222?siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}
+
+

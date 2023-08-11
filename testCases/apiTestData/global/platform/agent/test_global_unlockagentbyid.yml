@@ -1,0 +1,25 @@
+---
+alltest:
+- businessTests:
+  - case: unlock a agent by id
+    http:
+      method: POST
+      path: /api/global/agents/$id$:unlock?siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+
+  - case: unlock a agent by no exist id.
+    http:
+      method: POST
+      path: /api/global/agents/00000000-1111-2222-3333-000011112222:unlock?siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}

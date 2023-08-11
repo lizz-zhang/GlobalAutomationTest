@@ -1,0 +1,27 @@
+---
+alltest:
+- businessTests:
+  - case: post oauth-platform
+    http:
+      method: POST
+      path: /api/global/oAuthClients?siteid=$siteId$
+      body: {
+        "name": "oAuthClients—test",
+        "description": "Initial description",
+        "company": "Initial company",
+        "clientId": "$random$",
+        "redirectUris": "https://www.baidu.com",
+        "grantTypes": "1,2,3",
+        "scopes": "any",
+        "refreshTokenValidity": 720,
+        "accessTokenValidity": 12
+    }
+    expect:
+      responsestate: 201
+      responsejsonschemal:
+      responseitemcheck: {
+         "name":'Initial name',
+      }
+      customcheck: {}
+      aftercaseaction: DELETE
+      aftercasepath: /api/global/oAuthClients/$id$

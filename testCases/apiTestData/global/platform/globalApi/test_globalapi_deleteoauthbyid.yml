@@ -1,0 +1,24 @@
+---
+alltest:
+- businessTests:
+  - case: delete a oauth_platform by id
+    http:
+      method: DELETE
+      path: /api/global/oAuthClients/$id$?siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 204
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}
+
+  - case: delete a oauth_platform by no exist id
+    http:
+      method: DELETE
+      path: /api/global/oAuthClients/00000000-1111-2222-3333-000011112222?siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {}
+      customcheck: {}

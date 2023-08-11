@@ -1,0 +1,50 @@
+---
+alltest:
+- businessTests:
+  - case: import,merge
+    http:
+      method: POST
+      path: /api/contact/contacts:import?siteId=$siteId$
+      body: {
+        "duplicateControlOption": "merge",
+        "uploadFileURL":"$file_url$"
+  }
+    expect:
+      responsestate: 202
+      responsejsonschemal:
+      responseitemcheck: {
+
+      }
+      customcheck: {}
+
+  - case: import,replace
+    http:
+      method: POST
+      path: /api/contact/contacts:import?siteId=$siteId$
+      body: {
+        "duplicateControlOption": "replace",
+        "uploadFileURL":"$file_url$"
+  }
+    expect:
+      responsestate: 202
+      responsejsonschemal:
+      responseitemcheck: {
+
+      }
+      customcheck: {}
+
+  - case: import,skip
+    http:
+      method: POST
+      path: /api/contact/contacts:import?siteId=$siteId$
+      body: {
+        "duplicateControlOption": "skip",
+        "uploadFileURL":"$file_url$"
+  }
+    expect:
+      responsestate: 202
+      responsejsonschemal:
+      responseitemcheck: {
+
+      }
+      customcheck: {}

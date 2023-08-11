@@ -1,0 +1,16 @@
+---
+alltest:
+- businessTests:
+  - case: get agents
+    http:
+      method: GET
+      path: /api/global/agents?pageIndex=1&pageSize=50&sortBy=displayName&sortOrder=asc&siteid=$siteId$
+      body: {}
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+         "agents.[*].displayName":'initial 1'
+      }
+      customcheck: {}
+

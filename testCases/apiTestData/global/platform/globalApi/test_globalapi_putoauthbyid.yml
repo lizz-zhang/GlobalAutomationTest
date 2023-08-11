@@ -1,0 +1,47 @@
+---
+alltest:
+- businessTests:
+  - case: put a oauth by id
+    http:
+      method: PUT
+      path: /api/global/oAuthClients/$id$?siteid=$siteId$
+      body: {
+        "name": "update name",
+        "description": "update description",
+        "company": "update company",
+        "clientId": "$random$",
+        "redirectUris": "https://www.baidu.update",
+        "grantTypes": "1,2,3",
+        "scopes": "any",
+        "refreshTokenValidity": 720,
+        "accessTokenValidity": 12
+    }
+    expect:
+      responsestate: 200
+      responsejsonschemal:
+      responseitemcheck: {
+         "name":'update name',
+      }
+      customcheck: {}
+
+  - case: put a oauth by no exist id
+    http:
+      method: PUT
+      path: /api/global/oAuthClients/00000000-1111-2222-3333-000011112222?siteid=$siteId$
+      body: {
+        "name": "update name",
+        "description": "update description",
+        "company": "update company",
+        "clientId": "$random$",
+        "redirectUris": "https://www.baidu.update",
+        "grantTypes": "1,2,3",
+        "scopes": "any",
+        "refreshTokenValidity": 720,
+        "accessTokenValidity": 12
+    }
+    expect:
+      responsestate: 404
+      responsejsonschemal:
+      responseitemcheck: {
+      }
+      customcheck: {}
