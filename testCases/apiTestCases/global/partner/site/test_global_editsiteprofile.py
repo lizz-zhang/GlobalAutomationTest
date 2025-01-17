@@ -13,7 +13,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 basedir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
-fileName = basedir + '\\apiTestData\\global\\partner\\site\\' + os.path.basename(__file__).split('.')[0] + '.yml'
+fileName = basedir + '//apiTestData//global//partner//site//' + os.path.basename(__file__).split('.')[0] + '.yml'
 readfile = ReadFile(fileName)
 cases, parameters = readfile.get_businessTests_data()
 cases_oauth_token, parameters_oauth_token = readfile.get_businessTests_data()

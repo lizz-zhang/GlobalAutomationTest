@@ -19,7 +19,7 @@ from autoUtils.ymlLib import ReadFile
 import uuid
 
 basedir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
-fileName = basedir + '\\apiTestData\\global\\platform\\registerApi\\' + os.path.basename(__file__).split('.')[0] + '.yml'
+fileName = basedir + '//apiTestData//global//platform//registerApi//' + os.path.basename(__file__).split('.')[0] + '.yml'
 readfile = ReadFile(fileName)
 cases, parameters = readfile.get_businessTests_data()
 

@@ -115,6 +115,25 @@ def replace_dict_value(input_dict, param, value):
                     input_dict[item][i] = str(input_dict[item][i]).replace(param, str(value))
         return  input_dict
 
+# 替换dict里的变量为实际值，支持多个变量替换。在replacements中传入dict，key为变量，value为实际值
+def replace_dict_value_multi(input_dict, replacements_dict):
+    if isinstance(input_dict, dict):
+        for item in input_dict:
+            if isinstance(input_dict[item], str):
+                for param, value in replacements_dict.items():
+                    input_dict[item] = input_dict[item].replace(param, str(value))
+            elif isinstance(input_dict[item], dict):
+                replace_dict_value_multi(input_dict[item], replacements_dict)
+            elif isinstance(input_dict[item], list):
+                for i in range(len(input_dict[item])):
+                    if isinstance(input_dict[item][i], dict):
+                        replace_dict_value_multi(input_dict[item][i], replacements_dict)
+                    elif isinstance(input_dict[item][i], str):
+                        for param, value in replacements_dict.items():
+                            input_dict[item][i] = input_dict[item][i].replace(
+                                param, str(value)
+                            )
+        return input_dict
 
 def upload_file(token_path_name, file_name, partner_or_platform):
     env = str(ManageGlobalData().get_global_value())
@@ -134,7 +153,7 @@ def upload_file(token_path_name, file_name, partner_or_platform):
     if token_response.status_code == 200:
         header = {'Authorization': 'Bearer ' + str(token_response.content.decode())}
         file_service_path = config_data_json_dict[env]['partnerFileService']
-        test_file_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + '\\autoConfig\\' + file_name
+        test_file_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + '//autoConfig//' + file_name
         files = {'file': open(test_file_path, 'rb')}
         file_key_response = requests.post(file_service_path, files=files,headers=header)
         if file_key_response.status_code == 200:
@@ -145,6 +164,20 @@ def upload_file(token_path_name, file_name, partner_or_platform):
         logger.error('get file service token error')
     return file_key
 
+def find_value_by_key(input_arr, keyword):
+    if isinstance(input_arr, list):
+        for item in input_arr:
+            result = find_value_by_key(item, keyword)
+            if result is not None:
+                return result
+    elif isinstance(input_arr, dict):
+        if keyword in input_arr:
+            return input_arr[keyword]
+        for value in input_arr.values():
+            result = find_value_by_key(value, keyword)
+            if result is not None:
+                return result
+    return None
 
 def get_public_canned_message_rootcategory(login_info):
     config_data_json_dict = read_config_file('environments.json')
@@ -160,7 +193,7 @@ if __name__ == '__main__':
     #print(len(re.findall("at", "a1tt")))
     testDict = {"test": "testin", "test1": {"n1":1, "n2":2 },"test2": [{"t1":"t1"}]}
     testDict1 = {"test": "testin", "test1": {"n1":1, "n2":2 },"test2": [{"t1":"t1"}]}
-    path = 'E:\\share\\NewBotAutomation\\autoConfig\\botdata.json'
+    path = 'E://share//NewBotAutomation//autoConfig//botdata.json'
     with open(path,mode='r') as f:
           config_data_json_dict = json.load(f)
     #print(config_data_json_dict['intent']['t_body'])
@@ -169,3 +202,70 @@ if __name__ == '__main__':
     # print(searchAndChangeDict(testDict1,str(testDict)))
     #print(random.sample('zyxwvutsrqponmlkjihgfedcba', 5))
     #print(string)
+
+# 替换test data里面的更新数据到默认的结构体里面,这样在准备request body的时候,就可以不用关注那些没有修改的数据
+def replace_request_body_data_with_test_data(origin_data, changed_data):
+    """
+    Replace values in origin_data with corresponding values from changed_data.
+
+    Args:
+        origin_data (dict): The original data to be modified.
+        changed_data (dict): The data with replacement values.
+
+    Returns:
+        dict: The modified origin_data.
+    """
+    for key, value in changed_data.items():
+        if key in origin_data:
+            if isinstance(value, dict) and isinstance(origin_data[key], dict):
+                origin_data[key] = replace_request_body_data_with_test_data(
+                    origin_data[key], value
+                )
+            elif isinstance(value, list) and isinstance(origin_data[key], list):
+                for i in range(min(len(value), len(origin_data[key]))):
+                    if isinstance(value[i], dict) and isinstance(
+                        origin_data[key][i], dict
+                    ):
+                        origin_data[key][i] = replace_request_body_data_with_test_data(
+                            origin_data[key][i], value[i]
+                        )
+                    else:
+                        origin_data[key][i] = value[i]
+            else:
+                origin_data[key] = value
+    return origin_data
+
+def ifItemInKeysAndValueNotNone(key, inputDict):
+    if key in inputDict:
+        if not (isinstance(inputDict[key], type(None))):
+            return True
+        else:
+            return False
+    else:
+        return False
+
+
+def combineUUIDAndNextActionId(finalString):
+    if re.search(r"\$.*\$", finalString):
+        pathList = finalString.split("$")
+        num = int(len(re.findall(r"\$", finalString)) / 2)
+        idDict = {}
+        for i in range(0, num):
+            listNum = 2 * i + 1
+            item = str(pathList[listNum])
+            try:
+                newGuid = str(uuid.uuid1())
+                finalString = finalString.replace(("$" + item + "$"), newGuid)
+                idDict[item] = newGuid
+            except:
+                logger.info("The Input Dict didn't have the key which in the string!")
+        finalString = searchAndChangeDict(idDict, finalString)
+    return finalString
+
+
+def generate_small_ip():
+    return ".".join(str(random.randint(0, 127)) for i in range(4))
+
+
+def generate_big_ip():
+    return ".".join(str(random.randint(128, 255)) for i in range(4))

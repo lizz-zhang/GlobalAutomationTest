@@ -8,7 +8,7 @@ from autoUtils.manage_global_data import ManageGlobalData
 
 
 basedir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
-fileName = basedir + '\\testCases\\apiTestData\\global\\platformapi\\' + os.path.basename(__file__).split('.')[0] + '.yml'
+fileName = basedir + '//testCases//apiTestData//global//platformapi//' + os.path.basename(__file__).split('.')[0] + '.yml'
 readfile = ReadFile(fileName)
 cases, parameters = readfile.get_businessTests_data()
 

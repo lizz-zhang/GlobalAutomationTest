@@ -1,6 +1,7 @@
 {
   "global9": {
     "dash": "https://global9dash.testing.comm100dev.io/",
+    "dash_ui": "https://global9dash.testing.comm100dev.io/ui/10000",
     "partner": "https://global9partner.testing.comm100dev.io",
     "api": "https://global9api.testing.comm100dev.io",
     "apiv4": "https://global9api.testing.comm100dev.io/v4",
@@ -11,6 +12,7 @@
     "getJwtTokenByPartnerUser": "/partnerloginapi/Login",
     "routeserver": "https://global9route.testing.comm100dev.io",
     "center": "https://global9enter.testing.comm100dev.io",
+    "secure": "https://global9secure.testing.comm100dev.io",
     "apikey": "EBB97B32-60FE-4DE9-861E-40D0C2299D54",
     "agent": {
       "email": "test@global9.com",
@@ -58,62 +60,9 @@
     },
     "publicCannedMessageCategoryPath": "/api/global/publiccannedmessagecategories"
   },
-  "livechat2": {
-    "dash": "https://livechat2dash.testing.comm100dev.io/",
-    "partner": "https://livechat2partner.testing.comm100dev.io",
-    "api": "https://livechat2api.testing.comm100dev.io",
-    "apiv4": "https://livechat2api.testing.comm100dev.io/v4",
-    "internal": "https://livechat2internal.testing.comm100dev.io",
-    "commonService": "https://commonservice.testing.comm100dev.io",
-    "chatserver": "https://livechat2chatserver.testing.comm100dev.io",
-    "getJwtTokenByAgent": "/api/global/jwtToken/Login?siteId=",
-    "getJwtTokenByPartnerUser": "/partnerloginapi/Login",
-    "routeserver": "https://livechat2route.testing.comm100dev.io",
-    "center": "https://livechat2center.testing.comm100dev.io",
-    "apikey": "EBB97B32-60FE-4DE9-861E-40D0C2299D54",
-    "agent": {
-      "email": "jacktest5@comm100.com",
-      "password": "111111",
-      "IsAutoLogin": false,
-      "siteId": 10013,
-      "apiKey": "a17a9d65c147420bbe8f84d8cf75b1e2"
-    },
-    "paidSite": 10025,
-    "trialSite": 10042,
-    "commonHeaders": {
-      "content-type": "application/json; charset=utf-8"
-    },
-    "oauth_token": {
-      "path": "https://livechat2dash.testing.comm100dev.io/oauth/token",
-      "body": {
-        "email": "jacktest5@comm100.com",
-        "password": "111111",
-        "grant_type": "password",
-        "client_id": "111",
-        "siteid": "10013"
-      }
-    },
-    "partnerFileServiceTokenPath": "/api/billing/fileservice/token?partnerId=",
-    "partnerFileService":"https://livechat2file.testing.comm100dev.io/fileservice/v1/files",
-    "partnerUser": {
-      "partnerId": 10000,
-      "email": "hardy.song@comm100.com",
-      "password": "111111"
-    },
-    "partner_oauth_token": {
-      "path": "https://livechat2partner.testing.comm100dev.io/oauth/token",
-      "body": {
-        "email": "hardy.song@comm100.com",
-        "password": "111111",
-        "grant_type": "password",
-        "client_id": "123456",
-        "client_secret": "1"
-      }
-    },
-    "publicCannedMessageCategoryPath": "/api/global/publiccannedmessagecategories"
-  },
   "internal7": {
     "dash": "https://internal7dash.testing.comm100dev.io/",
+    "dash_ui": "https://internal7dash.testing.comm100dev.io/ui/10000",
     "partner": "https://internal7partner.testing.comm100dev.io",
     "api": "https://internal7api.testing.comm100dev.io",
     "apiv4": "https://internal7api.testing.comm100dev.io/v4",
@@ -124,6 +73,7 @@
     "getJwtTokenByPartnerUser": "/partnerloginapi/Login",
     "routeserver": "https://internal7route.testing.comm100dev.io",
     "center": "https://internal7center.testing.comm100dev.io",
+    "secure": "https://global9secure.testing.comm100dev.io",
     "agent": {
       "email": "lizztest2@fa.com",
       "password": "2wsx_1qaz",
@@ -165,73 +115,19 @@
     },
     "publicCannedMessageCategoryPath": "/api/global/publiccannedmessagecategories"
   },
-  "outreach": {
-    "dash": "https://outreachdash.testing.comm100dev.io",
-    "partner": "https://outreachpartner.testing.comm100dev.io",
-    "api": "https://outreachapi.testing.comm100dev.io",
-    "apiv4": "https://outreachapi.testing.comm100dev.io/v4",
-    "internal": "https://outreachinternal.testing.comm100dev.io",
-    "commonService": "https://commonservice.testing.comm100dev.io",
-    "chatserver": "https://outreachchatserver.testing.comm100dev.io",
-    "getJwtTokenByAgent": "/api/global/jwtToken/Login?siteId=",
-    "getJwtTokenByPartnerUser": "/partnerloginapi/Login",
-    "routeserver": "https://outreachroute.testing.comm100dev.io",
-    "center": "https://outreachcenter.testing.comm100dev.io",
-    "apikey": "",
-    "agent": {
-      "email": "api@test.com",
-      "password": "111111",
-      "IsAutoLogin": false,
-      "siteId": 10013,
-      "apiKey": "16982e0b6dc643f198eed26d5dd6c257"
-    },
-    "paidSite": 0,
-    "trialSite": 0,
-    "commonHeaders": {
-      "content-type": "application/json; charset=utf-8"
-    },
-    "oauth_token": {
-      "path": "https://outreachdash.testing.comm100dev.io/oauth/token",
-      "body": {
-        "email": "api@test.com",
-        "password": "111111",
-        "grant_type": "password",
-        "client_id": "123456",
-        "siteid": "10013"
-      }
-    },
-    "partnerFileServiceTokenPath": "/api/billing/fileservice/token?partnerId=$partnerId$",
-    "ContactFileServiceTokenPath": "/api/contact/fileservice/token?siteId=$siteId$",
-    "partnerFileService":"https://outreachfile.testing.comm100dev.io/fileservice/v1/files",
-    "partnerUser": {
-      "partnerId": 10000,
-      "email": "hardy.song@comm100.com",
-      "password": "111111"
-    },
-    "partner_oauth_token": {
-      "path": "https://outreachpartner.testing.comm100dev.io/oauth/token",
-      "body": {
-        "email": "hardy.song@comm100.com",
-        "password": "111111",
-        "grant_type": "password",
-        "client_id": "a8a0171d-1a44-4791-8737-9a2c3417a4e5",
-        "client_secret": "123456"
-      }
-    },
-    "publicCannedMessageCategoryPath": "/api/global/publiccannedmessagecategories"
-  },
   "staging": {
-    "dash": "https://dash11staging.comm100.io",
-    "partner": "https://partnerstaging.comm100.io",
-    "api": "https://api11staging.comm100.io",
-    "apiv4": "https://api11staging.comm100.io/v4",
-    "internal": "https://internalstaging.comm100.io",
-    "commonService": "https://commonservicestaging.comm100.io",
-    "chatserver": "https://chatserver11staging.comm100.io",
+    "dash": "https://dash11.comm100staging.com",
+    "partner": "https://partner.comm100staging.com",
+    "api": "https://api11.comm100staging.com",
+    "apiv4": "https://api11.comm100staging.com/v4",
+    "internal": "https://internal.comm100staging.com",
+    "commonService": "https://commonservice.comm100staging.com",
+    "chatserver": "https://chatserver11.comm100staging.com",
     "getJwtTokenByAgent": "/api/global/jwtToken/Login?siteId=",
     "getJwtTokenByPartnerUser": "/partnerloginapi/Login",
-    "routeserver": "https://routestaging.comm100.io",
-    "center": "https://centerstaging.comm100.io",
+    "routeserver": "https://route.comm100staging.com",
+    "center": "https://center.comm100staging.com",
+    "secure": "https://secure.comm100staging.com",
     "apikey": "",
     "agent": {
       "email": "global@autotest.com",
@@ -246,7 +142,7 @@
       "content-type": "application/json; charset=utf-8"
     },
     "oauth_token": {
-      "path": "https://dash11staging.comm100.io/oauth/token",
+      "path": "https://dash11.comm100staging.com/oauth/token",
       "body": {
         "email": "global@autotest.com",
         "password": "2wsx_1qaz",
@@ -257,14 +153,14 @@
     },
     "partnerFileServiceTokenPath": "/api/billing/fileservice/token?partnerId=$partnerId$",
     "ContactFileServiceTokenPath": "/api/contact/fileservice/token?siteId=$siteId$",
-    "partnerFileService":"https://file11staging.comm100download.com/fileservice/v1/files",
+    "partnerFileService":"https://file11.comm100staging.com/fileservice/v1/files",
     "partnerUser": {
       "partnerId": 10000,
       "email": "hardy.song@comm100.com",
       "password": "111111"
     },
     "partner_oauth_token": {
-      "path": "https://partnerstaging.comm100.io/oauth/token",
+      "path": "https://partner.comm100staging.com/oauth/token",
       "body": {
         "email": "hardy.song@comm100.com",
         "password": "111111",

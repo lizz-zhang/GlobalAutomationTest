@@ -235,8 +235,8 @@ class ReadFile:
 
 if __name__ == "__main__":
     # for test
-    #filepath1 = 'F:\\auto\\pytest\\data\\webpage\\test_webpage.yml'
-    filepath2 = 'E:\\share\\NewBotAutomation\\testCases\\TestData\\bottesting\\apiTestData\\test_api.yml'
+    #filepath1 = 'F://auto//pytest//data//webpage//test_webpage.yml'
+    filepath2 = 'E://share//NewBotAutomation//testCases//TestData//bottesting//apiTestData//test_api.yml'
 
     rf = ReadFile(filepath2)
     #test = rf.updateDictByKey(rf.getDictKeyValue,rf.getDict)

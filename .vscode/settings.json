@@ -5,7 +5,7 @@
          //"--browser=chromium",
          //"--browser=firefox", 
          //"--browser=webkit",
-         "--browser-channel=chrome",  //chrome,msedge
+         //"--browser-channel=chrome",  //chrome,msedge
          //"--device=iPhone 4",  //iPhone 4,iPhone 5/SE,iPhone 6/7/8,iPhone 6/7/8 Plus,iPhone X,iPad Mini,iPad",
          //"--slowmo=10000",
          //"--check-snapshots",
@@ -19,9 +19,9 @@
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
     "[python]": {
-        "editor.defaultFormatter": true,
+        "editor.defaultFormatter": "ms-python.python",
     },
     "python.formating.provider": "none",
     "python.analysis.extraPaths": ["./venv/Lib/site-packages/pyviztest"],
-    "python.pythonPath": "C:\\Users\\LizzZhang\\AppData\\Local\\Programs\\Python\\Python39\\python.exe"
+    "python.pythonPath": "C://Users//LizzZhang//AppData//Local//Programs//Python//Python39//python.exe"
 }

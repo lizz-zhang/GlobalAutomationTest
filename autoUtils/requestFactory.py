@@ -6,6 +6,11 @@
 @email:nash.xiang@comm100.com
 ======================
 """
+
+import requests
+
+from autoUtils.fileReader import read_config_file
+
 import logging
 import requests
 from autoUtils.fileReader import read_config_file
@@ -50,3 +55,49 @@ def get_root_domain(url):
     if len(domain_parts) > 2:
         return "." + ".".join(domain_parts[-2:])
     return parsed_url.netloc
+
+def send_request(
+    request_url,
+    request_params,
+    request_type,
+    request_auth,
+    request_header,
+    request_body,
+    request_data=None,
+):
+    response = None
+
+    if request_type == "GET":
+        response = requests.get(
+            request_url,
+            params=request_params,
+            auth=request_auth,
+            headers=request_header,
+        )
+    elif request_type == "POST":
+        response = requests.post(
+            request_url,
+            params=request_params,
+            auth=request_auth,
+            json=request_body,
+            headers=request_header,
+            data=request_data,
+        )
+    elif request_type == "PUT":
+        response = requests.put(
+            request_url,
+            params=request_params,
+            auth=request_auth,
+            json=request_body,
+            headers=request_header,
+        )
+    elif request_type == "DELETE":
+        response = requests.delete(
+            request_url,
+            params=request_params,
+            auth=request_auth,
+            headers=request_header,
+            json=request_body,
+        )
+
+    return response
