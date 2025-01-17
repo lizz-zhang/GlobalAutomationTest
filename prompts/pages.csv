@@ -1,0 +1,4 @@
+module_name,menu_name,page_name,page_title,path,suffix_querystring_key,set_up_fixture
+livechatpage,,Dashboard,,/livechat/dashboard/,,
+livechatpage,,Pre-chat,,/livechat/campaign/prechat/,?scopingcampaignid=,init_campaign
+livechatpage,Shifts,New Shift,,/livechat/settings/shift/new,,

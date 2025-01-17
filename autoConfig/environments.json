@@ -1,22 +1,22 @@
 {
-  "global8": {
-    "dash": "https://global8dash.testing.comm100dev.io/",
-    "partner": "https://global8partner.testing.comm100dev.io",
-    "api": "https://global8api.testing.comm100dev.io",
-    "apiv4": "https://global8api.testing.comm100dev.io/v4",
-    "internal": "https://global8internal.testing.comm100dev.io",
+  "global9": {
+    "dash": "https://global9dash.testing.comm100dev.io/",
+    "partner": "https://global9partner.testing.comm100dev.io",
+    "api": "https://global9api.testing.comm100dev.io",
+    "apiv4": "https://global9api.testing.comm100dev.io/v4",
+    "internal": "https://global9internal.testing.comm100dev.io",
     "commonService": "https://commonservice.testing.comm100dev.io",
-    "chatserver": "https://global8chatserver.testing.comm100dev.io",
+    "chatserver": "https://global9chatserver.testing.comm100dev.io",
     "getJwtTokenByAgent": "/api/global/jwtToken/Login?siteId=",
     "getJwtTokenByPartnerUser": "/partnerloginapi/Login",
-    "routeserver": "https://global8route.testing.comm100dev.io",
-    "center": "https://global8enter.testing.comm100dev.io",
+    "routeserver": "https://global9route.testing.comm100dev.io",
+    "center": "https://global9enter.testing.comm100dev.io",
     "apikey": "EBB97B32-60FE-4DE9-861E-40D0C2299D54",
     "agent": {
-      "email": "autotest@1.com",
+      "email": "test@global9.com",
       "password": "Aa00000000",
       "IsAutoLogin": false,
-      "siteId": 10001,
+      "siteId": 10000,
       "apiKey": "74d65ea7d80744928473c1cbb0ce444d"
     },
     "paidSite": 10000,
@@ -31,7 +31,7 @@
       "passWord": "Sklafd!6asw29"
     },
     "oauth_token": {
-      "path": "https://global8dash.testing.comm100dev.io/oauth/token",
+      "path": "https://global9dash.testing.comm100dev.io/oauth/token",
       "body": {
         "email": "autotest@1.com",
         "password": "Aa00000000",
@@ -41,14 +41,14 @@
       }
     },
     "partnerFileServiceTokenPath": "/api/billing/fileservice/token?partnerId=",
-    "partnerFileService":"https://global8file.testing.comm100dev.io/fileservice/v1/files",
+    "partnerFileService":"https://global9file.testing.comm100dev.io/fileservice/v1/files",
     "partnerUser": {
       "partnerId": 10000,
       "email": "hardy.song@comm100.com",
       "password": "111111"
     },
     "partner_oauth_token": {
-      "path": "https://global8partner.testing.comm100dev.io/oauth/token",
+      "path": "https://global9partner.testing.comm100dev.io/oauth/token",
       "body": {
         "email": "hardy.song@comm100.com",
         "password": "111111",

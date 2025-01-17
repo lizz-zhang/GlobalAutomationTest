@@ -1,0 +1,5 @@
+module_name,menu_name,page_name,page_title,suffix_querystring_key,set_up_fixture,drawer_name,drawer_title
+queuepageapp,Locations,New Location,,,,new_desk,New Desk
+queuepageapp,Locations,Edit Location,,?id=,init_location,edit_desk,Edit new_desk
+queuepageapp,Notification,Notification Email,Notification,?scopingqueueid=,init_queue,edit_email,Queue Session Created
+queuepageapp,,Working Hours Holidays,Working Hours & Holidays,?scopingqueueid=,init_queue,new_holiday,New Holiday

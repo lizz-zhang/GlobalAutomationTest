@@ -1,0 +1,7 @@
+module_name,menu_name,page_name,page_title,path,suffix_querystring_key,set_up_fixture
+livechatpage,,Auto Distribution,,/livechat/settings/autodistribution/,,
+livechatpage,,Shifts,,/livechat/settings/shift/,,
+livechatpage,,Segmentation,,/livechat/settings/segmentation/,,
+livechatpage,Ban List,"Banned Visitor ",Ban List,/livechat/settings/banlist/bannedvisitor/,,
+livechatpage,Ban List,Edit Banned IP,,/livechat/settings/banlist/bannedip/edit,?bannedipid=,create_banned_ip
+livechatpage,,Cookie Restriction,,/livechat/settings/cookierestriction/,,

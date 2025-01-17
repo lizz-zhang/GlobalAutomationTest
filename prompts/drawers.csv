@@ -1,0 +1,7 @@
+module_name,menu_name,page_name,page_title,suffix_querystring_key,set_up_fixture,drawer_name,drawer_title
+globalpage,Agents,Agents,Agents,,init_agents,reset_password,Reset Password
+globalpage,Agents,Edit Agent,,?agentid=,init_agents,change_avatar,Change Avatar
+globalpage,Agents,New Agent,,,,change_avatar,Change Avatar
+globalpage,Agents,Agents,,,init_agents,agent_permission_settings,Permission Settings of Agent
+globalpage,Roles,Roles,,,init_roles,role_permission_settings,Permission Settings of Agent Role
+globalpage,Agent Chats,Agent Chats,,,init_agentchats,agent_chat_details,Agent Chat Details
