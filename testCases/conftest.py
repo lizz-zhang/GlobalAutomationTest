@@ -1,12 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-======================
-@author:nash
-@time:01/17/2022:3:18 PM
-@email:nash.xiang@comm100.com
-======================
-"""
-
 import json
 import os
 import re
@@ -19,15 +11,28 @@ import pytest
 import logging
 
 from filelock import FileLock
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.options import Options as chromeOption
 from selenium import webdriver
+from selenium.webdriver.firefox.options import Options as firefoxOption
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from autoUtils.manage_global_data import ManageGlobalData
 from autoUtils.fileReader import read_config_file, get_webdriver_file_with_extension
-from autoUtils.requestFactory import test_api_request
+from autoUtils.requestFactory import test_api_request, get_root_domain
+
 from autoUtils.optionUtil import ifItemInKeysAndValueNotNone
+
+from faker import Faker
+from testCases.conftest_package.conftest_contactapi import *
+from testCases.conftest_package.conftest_globalapi import *
+from playwright.sync_api import sync_playwright, expect
+
+
+
+
+
+
 
 # from uiPages.login_page import LoginPage
 

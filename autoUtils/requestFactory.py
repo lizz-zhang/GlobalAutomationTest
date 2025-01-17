@@ -6,10 +6,12 @@
 @email:nash.xiang@comm100.com
 ======================
 """
-
+import logging
 import requests
 from autoUtils.fileReader import read_config_file
 from autoUtils.manage_global_data import ManageGlobalData
+from urllib.parse import urlparse
+logger = logging.getLogger(__name__)
 
 def test_api_request(request_url, request_type, request_header, request_body):
     response = None
@@ -42,4 +44,9 @@ def test_api_basic_auth_request(request_url, request_type, request_body):
 
     return response
 
-
+def get_root_domain(url):
+    parsed_url = urlparse(url)
+    domain_parts = parsed_url.netloc.split(".")
+    if len(domain_parts) > 2:
+        return "." + ".".join(domain_parts[-2:])
+    return parsed_url.netloc
