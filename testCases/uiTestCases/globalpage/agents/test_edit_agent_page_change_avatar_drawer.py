@@ -2,7 +2,7 @@ from testCases.uiPages.globalpage.agents.edit_agent_page import (
     EditAgentPage,
 )
 from testCases.uiPages.globalpage.agents.edit_agent_page_change_avatar_drawer import (
-    EditAgentPageChangeAvatardDrawer,
+    EditAgentPageChangeAvatarDrawer,
 )
 
 import pytest
@@ -10,7 +10,7 @@ import allure
 
 
 @allure.feature("globalpage_edit_agent_page_change_avatar_drawer")
-class TestEditAgentPageChangeAvatardDrawer:
+class TestEditAgentPageChangeAvatarDrawer:
     @pytest.fixture(scope="function")
     def init_page(self, login, page, init_agents):
         id = init_agents.json()["agentid"]
@@ -25,7 +25,7 @@ class TestEditAgentPageChangeAvatardDrawer:
     @pytest.fixture(scope="function")
     def init_drawer(self, page, init_page):
         init_page.open_change_avatar_drawer()
-        edit_agent_page_change_avatar_drawer = EditAgentPageChangeAvatardDrawer(page)
+        edit_agent_page_change_avatar_drawer = EditAgentPageChangeAvatarDrawer(page)
 
         return edit_agent_page_change_avatar_drawer
 

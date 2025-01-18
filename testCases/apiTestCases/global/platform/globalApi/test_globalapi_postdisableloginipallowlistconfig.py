@@ -17,7 +17,7 @@ cases_oauth_token, parameters_oauth_token = readfile.get_businessTests_data()
 
 class TestPostDisableLoginIpAllowlistConfig:
     @pytest.mark.globalapi
-    @pytest.mark.loginipallowlist
+    
     @pytest.mark.bella
     @pytest.mark.parametrize('case, http, expect', list(parameters), ids=cases)
     def test_post_disable_login_ip_allowlist_config(self, case, http, expect, login):
@@ -26,7 +26,7 @@ class TestPostDisableLoginIpAllowlistConfig:
         commonResponseAssert(get_response, expect)
 
     @pytest.mark.globalapi
-    @pytest.mark.loginipallowlist
+    
     @pytest.mark.bella
     @pytest.mark.parametrize('case, http, expect', list(parameters_oauth_token), ids=cases_oauth_token)
     def test_post_disable_login_ip_allowlist_config_oauth_token(self, case, http, expect, login):

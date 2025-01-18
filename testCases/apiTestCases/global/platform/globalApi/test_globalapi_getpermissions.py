@@ -17,7 +17,7 @@ cases_oauth_token, parameters_oauth_token = readfile.get_businessTests_data()
 
 class TestGetPermissions:
     @pytest.mark.globalapi
-    @pytest.mark.permission
+    
     @pytest.mark.bella
     @pytest.mark.parametrize('case, http, expect', list(parameters), ids=cases)
     def test_get_permissions(self, case, http, expect, login):

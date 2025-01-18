@@ -16,7 +16,7 @@ cases_oauth_token, parameters_oauth_token = readfile.get_businessTests_data()
 
 class TestGetPublicCannedMessagess:
     @pytest.mark.globalapi
-    @pytest.mark.cannedmessages
+    
     @pytest.mark.bella
     @pytest.mark.parametrize('case, http, expect', list(parameters), ids=cases)
     def test_get_public_cannedmessages(self, case, http, expect, login):
@@ -26,7 +26,7 @@ class TestGetPublicCannedMessagess:
 
 
     @pytest.mark.globalapi
-    @pytest.mark.cannedmessages
+    
     @pytest.mark.bella
     @pytest.mark.parametrize('case, http, expect', list(parameters_oauth_token), ids=cases_oauth_token)
     def test_get_public_cannedmessages_oauth_token(self, case, http, expect, login):

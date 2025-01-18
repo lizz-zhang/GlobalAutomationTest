@@ -19,7 +19,7 @@ illegal_cases_oauth_token, illegal_parameters_oauth_token = readfile.get_illegal
 
 class TestPostPublicCannedMessageCategory:
     @pytest.mark.globalapi
-    @pytest.mark.cannedmessages
+    
     @pytest.mark.bella
     @pytest.mark.parametrize('case, http, expect', list(parameters), ids=cases)
     def test_post_public_cannedmessage_category(self, case, http, expect, login):
@@ -33,7 +33,7 @@ class TestPostPublicCannedMessageCategory:
             afterCaseActionAndAssert(login_info['dashUrl'], login_info['commonHeader'], get_response, expect)
 
     @pytest.mark.globalapi
-    @pytest.mark.cannedmessages
+    
     @pytest.mark.bella
     @pytest.mark.parametrize('case, http, expect', list(parameters_oauth_token), ids=cases_oauth_token)
     def test_post__public_cannedmessage_categoriey_oauth_token(self, case, http, expect, login):
@@ -49,7 +49,7 @@ class TestPostPublicCannedMessageCategory:
 
     @pytest.mark.parametrize('case, http, expect', list(illegal_parameters), ids=illegal_cases)
     @pytest.mark.globalapi
-    @pytest.mark.cannedmessages
+    
     @pytest.mark.bella
     def test_post__public_cannedmessage_categoriey_illegal(self, case, http, expect, login):
         login_info = login
@@ -61,7 +61,7 @@ class TestPostPublicCannedMessageCategory:
 
     @pytest.mark.parametrize('case, http, expect', list(illegal_parameters_oauth_token), ids=illegal_cases_oauth_token)
     @pytest.mark.globalapi
-    @pytest.mark.cannedmessages
+    
     @pytest.mark.bella
     def test_post__public_cannedmessage_categoriey_illegal_oauth_token(self, case, http, expect, login):
         login_info = login

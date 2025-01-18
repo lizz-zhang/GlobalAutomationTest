@@ -16,7 +16,6 @@ cases_oauth_token, parameters_oauth_token = readfile.get_businessTests_data()
 
 class TestPutRolePermissions:
     @pytest.mark.globalapi
-    @pytest.mark.permission
     @pytest.mark.bella
     @pytest.mark.parametrize('case, http, expect', list(parameters), ids=cases)
     @pytest.mark.parametrize('initial_data', ['roles'] , indirect=True)
@@ -29,7 +28,6 @@ class TestPutRolePermissions:
 
 
     @pytest.mark.globalapi
-    @pytest.mark.permission
     @pytest.mark.bella
     @pytest.mark.parametrize('case, http, expect', list(parameters_oauth_token), ids=cases_oauth_token)
     @pytest.mark.parametrize('initial_data', ['roles'] , indirect=True)

@@ -17,7 +17,7 @@ cases_oauth_token, parameters_oauth_token = readfile.get_businessTests_data()
 
 class TestGetSinglePublicCannedMessage:
     @pytest.mark.globalapi
-    @pytest.mark.cannedmessages
+    
     @pytest.mark.bella
     @pytest.mark.parametrize('case, http, expect', list(parameters), ids=cases)
     @pytest.mark.parametrize('initial_data', ['publiccannedmessage'] , indirect=True)
@@ -28,7 +28,7 @@ class TestGetSinglePublicCannedMessage:
         commonResponseAssert(get_response, expect)
 
     @pytest.mark.globalapi
-    @pytest.mark.cannedmessages
+    
     @pytest.mark.bella
     @pytest.mark.parametrize('case, http, expect', list(parameters_oauth_token), ids=cases_oauth_token)
     @pytest.mark.parametrize('initial_data', ['publiccannedmessage'] , indirect=True)

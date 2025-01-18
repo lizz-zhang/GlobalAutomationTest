@@ -2,7 +2,7 @@ from testCases.uiPages.globalpage.agents.new_agent_page import (
     NewAgentPage,
 )
 from testCases.uiPages.globalpage.agents.new_agent_page_change_avatar_drawer import (
-    NewAgentPageChangeAvatardDrawer,
+    NewAgentPageChangeAvatarDrawer,
 )
 
 import pytest
@@ -10,7 +10,7 @@ import allure
 
 
 @allure.feature("globalpage_new_agent_page_change_avatar_drawer")
-class TestNewAgentPageChangeAvatardDrawer:
+class TestNewAgentPageChangeAvatarDrawer:
     @pytest.fixture(scope="function")
     def init_page(self, login, page):
         new_agent_page = NewAgentPage(page)
@@ -23,7 +23,7 @@ class TestNewAgentPageChangeAvatardDrawer:
     @pytest.fixture(scope="function")
     def init_drawer(self, page, init_page):
         init_page.open_change_avatar_drawer()
-        new_agent_page_change_avatar_drawer = NewAgentPageChangeAvatardDrawer(page)
+        new_agent_page_change_avatar_drawer = NewAgentPageChangeAvatarDrawer(page)
 
         return new_agent_page_change_avatar_drawer
 
